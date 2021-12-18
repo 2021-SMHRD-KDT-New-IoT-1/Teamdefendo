@@ -21,6 +21,13 @@ public class Login extends HttpServlet {
 		String id =request.getParameter("id");
 		String pw = request.getParameter("password");
         
+		MemberDAO dao = new MemberDAO();
+		MemberVO vo;
+		vo=dao.Login(id,pw);
+		
+		if(vo!=null) {
+			System.out.println("vo ³Î ¾Æ´Ô");
+		}
 		
 		if(id.equals("admin")&&pw.equals("admin")) {
 			
@@ -30,11 +37,16 @@ public class Login extends HttpServlet {
 			
 			response.sendRedirect("./defendo/index_after.jsp");
 			
+		}else if(vo!=null) {
+			
+			
+			HttpSession session =request.getSession();
+			session.setAttribute("member", vo);
+			response.sendRedirect("./defendo/worker.html");
+			
+			
 		}else {
-			
 			response.sendRedirect("./defendo/index_before.jsp");
-			
-			
 		}
 	
 		

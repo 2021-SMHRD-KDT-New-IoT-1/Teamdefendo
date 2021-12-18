@@ -82,7 +82,6 @@ public class SensorDAO {
 		// 4. SQLπÆ ¡ÿ∫Ò
 		String sql = "select hm_id,latitude,longitude from tbl_helmet";
 		
-
 		pstmt = con.prepareStatement(sql);
 
 		rs = pstmt.executeQuery();
@@ -93,7 +92,11 @@ public class SensorDAO {
 			String hm_id = rs.getString("hm_id");
 			float latitude = rs.getFloat("latitude");
 			float longitude = rs.getFloat("longitude");
-
+			
+			System.out.println(hm_id);
+			System.out.println(latitude);
+			System.out.println(longitude);
+			
 			gpsvo = new GPSVO(latitude, longitude, hm_id);
            
 			gpsal.add(gpsvo);

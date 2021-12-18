@@ -1,6 +1,7 @@
 package Member;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +17,8 @@ public class MemberDAO {
 	    ResultSet rs;
 	    int cnt;
 		boolean check;
-
+		MemberVO vo = null;
+		ResultSet rs1;
 	 
 	    public void DBcon() {
 	         try {
@@ -73,6 +75,9 @@ public class MemberDAO {
 			
 			try {
 			
+		
+			
+			System.out.println("dao Join : "+id+"/"+password+"/"+name+"/"+tel+"/"+dept+"/"+check_manager);
 			
 			DBcon();
 
@@ -151,6 +156,83 @@ public class MemberDAO {
 		
 			
 		}
+		
+		
+		public MemberVO Login(String id,String pw) {
+			
+			System.out.println(id+"//"+pw);
+			try {
+				DBcon();
+				
+				String sql = "select * FROM tbl_worker where worker_id=? and worker_pw=?";
+				
+
+				pstmt = con.prepareStatement(sql);
+
+				// 4. 바인드 변수 채워두기
+				pstmt.setString(1, id);
+				pstmt.setString(2, pw);
+				
+				// 5. sql문 실행 후 결과 처리
+				rs = pstmt.executeQuery();
+				
+				
+				
+				if (rs.next()) {
+				
+					try {
+						System.out.println("11111번");
+
+						String sql1 = "select * FROM tbl_attendance where worker_id=?";
+						pstmt = con.prepareStatement(sql1);
+						pstmt.setString(1, id);
+						rs1 = pstmt.executeQuery();
+						
+						
+						
+						if (rs1.next()) {
+
+							
+							Date start_time= rs1.getDate("start_time"); 
+							Date end_time= rs1.getDate("end_time"); 
+							String att_type = rs1.getString("att_type");
+							
+							vo = new MemberVO(id, start_time, end_time, att_type);
+							System.out.println("222222번");
+						}
+					} catch (Exception e) {
+						
+						e.printStackTrace();
+					} finally {
+
+						if (rs1 != null) {
+							rs1.close();
+						}
+
+					}
+
+
+				}
+				
+
+			} catch (Exception e) {
+				
+				System.out.println("로그인실패");
+				e.printStackTrace();
+				
+			} finally {
+
+				DBclose();
+
+			}
+			
+			return vo;
+		
+			
+		}
+		
+		
+		
 		
 			
 		public int Hmregistration(String hm_id, String worker_id) {
