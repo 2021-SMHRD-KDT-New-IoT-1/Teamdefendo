@@ -53,7 +53,7 @@
 				<div class="main_nav">
 					<ul class="main_nav_list">
 						<li class="main_nav_item"><a href="All_Worker.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">직원 통합 관리</span></a></li>
-						<li class="main_nav_item"><a href="Location.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">직원 위치 확인</span></a></li>
+						<li class="main_nav_item"><a href="Location.jsp"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">직원 위치 확인</span></a></li>
 						<li class="main_nav_item"><a href="#"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">기기등록</span></a></li>
 					</ul>
 				</div>
@@ -133,14 +133,26 @@
 
 								<input style="font-family: 'Dolbomche_R' !important;" id="contact_form_name" class="input_field contact_form_name" name="hm_id" type="text" placeholder="안전모  ID" required="required" data-error="machine_id is required.">
 								<input style="font-family: 'Dolbomche_R' !important;" id="contact_form_name" class="input_field contact_form_name" name="worker_id" type="text" placeholder="근로자  ID" required="required" data-error="worker_id is required.">
-								<input style="font-family: 'Dolbomche_R' !important;" id="contact_form_name" class="input_field contact_form_name" type="text" placeholder="근로자 이름" required="required" data-error="worker_name is required.">
-								<textarea style="font-family: 'Dolbomche_R' !important;" class="text_field contact_form_message" id="contact_form_message"  name="message" placeholder="기기 특이사항" required="required" data-error="Please, write us a message."></textarea>
 								
-								<button style="font-family: 'Dolbomche_R' !important; font-size:25px;" id="contact_send_btn" type="button" class="contact_send_btn trans_200" value="Submit">등록 완료</button>
+								
+								<button  style="font-family: 'Dolbomche_R' !important; font-size:25px;" id="contact_send_btn" type="button" class="contact_send_btn trans_200" value="Submit">기기 정보 등록</button>
+								
 	
 							</form>
 						</div>
-						
+						<div class="contact_title" style="margin-top: 70px;"><span style="font-family:'SLEIGothicTTF' !important; font-size:40px;">안전모 기기 수정</span></div>
+
+						<div class="contact_form_container">
+							<form action="post">
+
+								<input style="font-family: 'Dolbomche_R' !important;" id="contact_form_name" class="input_field contact_form_name" name="hm_id" type="text" placeholder="안전모  ID" required="required" data-error="machine_id is required.">
+								<input style="font-family: 'Dolbomche_R' !important;" id="contact_form_name" class="input_field contact_form_name" name="worker_id" type="text" placeholder="근로자  ID" required="required" data-error="worker_id is required.">
+								
+								
+								<button style="font-family: 'Dolbomche_R' !important; font-size:25px;" id="contact_send_btn" type="button" class="contact_send_btn trans_200" value="Submit">기기 정보 수정</button>
+					
+							</form>
+						</div>
 						
 					</div>
 				</div>

@@ -59,7 +59,7 @@
 				<div class="main_nav">
 					<ul class="main_nav_list">
 						<li class="main_nav_item"><a href="All_Worker.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">직원 통합 관리</span></a></li>
-						<li class="main_nav_item"><a href="#"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">직원 위치 확인</span></a></li>
+						<li class="main_nav_item"><a href="Location.jsp"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">직원 위치 확인</span></a></li>
 						<li class="main_nav_item"><a href="machine.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">기기등록</span></a></li>
 					</ul>
 				</div>
@@ -128,28 +128,18 @@
 	</div>
 
 	<!-- Contact -->
-  
-<!-- 	<div class="contact">
-		<div class="container">  -->
-			<!-- Google Map -->
-	<!-- 		<div class="row">
-				<div class="col">
-					<div id="google_map">
-						<div class="map_container">
-							<div id="map"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>  -->
-	
 	<div class="contact">
-	<div class="container">
-	<div class="row">
-	<div class="col">
-	<div id="map" style="width:	1000px;height:750px; "></div>
+	   <div class="container">
+	       <div class="row">
+	            <div class="col">
+	              <div class="contact_form">
+	                   <div class="contact_title"><span style="font-family:'SLEIGothicTTF' !important; font-size:40px;">직원 실시간 위치 확인</span></div>
+	                   <div id="google_map">
+	                   <div class="map_container">
+	                     <div id="map" style="width: 1000px;height:750px; "></div>
+	                  </div>
+	                  </div>
+	              </div>
 				</div>
 			</div>
 
