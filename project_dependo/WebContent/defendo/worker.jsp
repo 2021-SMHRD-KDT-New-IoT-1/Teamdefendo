@@ -86,7 +86,7 @@ table.type11 th {
 				<!-- Logo -->
 				<div class="logo_container">
 					<div class="logo">
-						<a href="index_after.html"> <img src="images/logode.jpg"
+						<a href="index_after.jsp"> <img src="images/logode.jpg"
 							alt="">
 						</a>
 					</div>
@@ -110,7 +110,7 @@ table.type11 th {
 							<li class="main_nav_item"><a href="worker.html"><span
 									style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size: 18px;">출결
 										관리</span></a></li>
-							<li class="main_nav_item"><a href="w_mypage.html"><span
+							<li class="main_nav_item"><a href="w_mypage.jsp"><span
 									style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size: 18px;">마이페이지</span></a></li>
 
 						</ul>

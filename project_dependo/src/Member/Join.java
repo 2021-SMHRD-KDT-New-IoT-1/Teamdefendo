@@ -32,7 +32,7 @@ public class Join extends HttpServlet {
   	if(check_manager==null) {
 		check_manager="N";
 	}
-      
+      	
   	
     System.out.println("Join¼­ºí¸´ : "+id+"/"+password+"/"+name+"/"+tel+"/"+dept+"/"+check_manager);
     
