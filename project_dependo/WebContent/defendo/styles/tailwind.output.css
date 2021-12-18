@@ -634,8 +634,8 @@ img, video {
 }
 
 .bg-purple-600 { --bg-opacity: 1;
-	background-color: #7e3af2;
-	background-color: rgba(126, 58, 242, var(- -bg-opacity))
+	background-color: #ffb606;
+	background-color: rgba(255, 182, 6, var(--bg-opacity))
 }
 
 .hover\:bg-gray-100:hover { --bg-opacity: 1;
@@ -658,8 +658,8 @@ img, video {
 }
 
 .active\:bg-purple-600:active { --bg-opacity: 1;
-	background-color: #7e3af2;
-	background-color: rgba(126, 58, 242, var(- -bg-opacity))
+	background-color: #ffb606;
+	background-color: rgba(255, 182, 6, var(--bg-opacity))
 }
 
 .theme-dark .dark\:bg-gray-700 { --bg-opacity: 1;
@@ -775,13 +775,13 @@ img, video {
 }
 
 .focus\:border-purple-300:focus { --border-opacity: 1;
-	border-color: #cabffd;
-	border-color: rgba(202, 191, 253, var(- -border-opacity))
+	border-color: #e7e7b1;
+	border-color: rgba(231, 231, 177, var(--border-opacity))
 }
 
 .focus\:border-purple-400:focus { --border-opacity: 1;
-	border-color: #ac94fa;
-	border-color: rgba(172, 148, 250, var(- -border-opacity))
+	border-color: #e7e7b1;
+	border-color: rgba(231, 231, 177, var(--border-opacity))
 }
 
 .hover\:border-gray-500:hover { --border-opacity: 1;
@@ -1572,20 +1572,20 @@ img, video {
 
 .text-purple-100 { 
 	--text-opacity: 1;
-	color: #edebfe;
-	color: rgba(237, 235, 254, var(- -text-opacity))
+	border-color: #e7e7b1;
+	border-color: rgba(231, 231, 177, var(--border-opacity))
 }
 
 .text-purple-200 { 
 	--text-opacity: 1;
-	color: #dcd7fe;
-	color: rgba(220, 215, 254, var(- -text-opacity))
+	border-color: #e7e7b1;
+	border-color: rgba(231, 231, 177, var(--border-opacity))
 }
 
 .text-purple-600 { 
 	--text-opacity: 1;
-	/* color: #ffb606; */
-	color: rgba(126, 58, 242, var(- -text-opacity))
+	color: #ffb606; 
+	color: rgba(126, 58, 242, var(--text-opacity))
 }
 
 .focus-within\:text-purple-500:focus-within { 
@@ -1880,7 +1880,8 @@ img, video {
 }
 
 .focus\:shadow-outline-purple:focus {
-	box-shadow: 0 0 0 3px rgba(202, 191, 253, .45)
+	box-shadow: 0 0 0 3px rgba(231, 231, 177, .45)
+	
 }
 
 .theme-dark .dark\:focus\:shadow-outline-gray:focus {
