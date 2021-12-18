@@ -1,6 +1,8 @@
 package Member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,20 +28,28 @@ public class Login extends HttpServlet {
 		vo=dao.Login(id,pw);
 		
 		
-		if(id.equals("admin")&&pw.equals("admin")) {
+		if(vo.getAdmin_yesno().equals("Y")) {
 			
 			HttpSession session =request.getSession();
 			
-			session.setAttribute("member", id);
+			session.setAttribute("ID", id);
 			
 			response.sendRedirect("./defendo/index_after.jsp");
 			
-		}else if(vo!=null) {
+		}else if(vo.getAdmin_yesno().equals("N")) {
 			
 			
 			HttpSession session =request.getSession();
-			session.setAttribute("member", vo);
-			response.sendRedirect("./defendo/worker.html");
+			session.setAttribute("ID", id);
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter writer = response.getWriter(); 
+			writer.println("<script>alert('로그인 성공'); location.href='./defendo/worker.jsp'</script>"); 
+			writer.close();
+			response.sendRedirect("./defendo/worker.jsp");
+			
+
+			
+			
 			
 			
 		}else {

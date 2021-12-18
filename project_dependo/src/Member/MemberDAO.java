@@ -18,7 +18,7 @@ public class MemberDAO {
 	    int cnt;
 		boolean check;
 		MemberVO vo = null;
-		AttendanceVO avo = null;
+		
 
 	 
 	    public void DBcon() {
@@ -209,89 +209,7 @@ public class MemberDAO {
 		
 			
 		}
-		
-		
-		
-		
-			
-		public int Hmregistration(String hm_id, String worker_id) {
-			
-			try {
-		
-			
-				DBcon();
 
-				// 4. SQLπÆ ¡ÿ∫Ò
-				String sql = "insert into tbl_helmet_use(worker_id, hm_id) values(?,?)";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, hm_id);
-				pstmt.setString(2, worker_id);
-			
-				cnt = pstmt.executeUpdate();
-			
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					DBclose();
-
-				}
-
-				return cnt;
-				
-				
-				
-			}
-			
-			
-		
-		
-		
-		
-	
-		public AttendanceVO attendance(String worker_id) {
-			
-			
-		
-				try {
-					
-					DBcon();
-
-					String sql = "select * FROM tbl_attendance where worker_id=?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, worker_id);
-					rs = pstmt.executeQuery();
-					
-					
-					
-					if (rs.next()) {
-
-						
-						Date start_time= rs.getDate("start_time"); 
-						Date end_time= rs.getDate("end_time"); 
-						String att_type = rs.getString("att_type");
-						
-						avo = new AttendanceVO(worker_id, start_time, end_time, att_type);
-						
-						
-						
-					}
-				} catch (Exception e) {
-					
-					e.printStackTrace();
-				} finally {
-					DBclose();
-				}
-
-
-	
-			
-				return avo;
-		
-		}
-		
-		
-		
-		
 		
 		}
 		

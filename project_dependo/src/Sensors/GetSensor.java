@@ -1,4 +1,4 @@
-package SensorsController;
+package Sensors;
 
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -1,16 +1,19 @@
-package SensorsController;
+package Sensors;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class SensorDAO {
 	
 	private Connection conn;
 	private PreparedStatement psmt;
 	private ResultSet rs;
+    SensorVO gpsvo = null;
+    ArrayList<SensorVO> gpsal =null;
 
 
 	private void conn() {
@@ -98,6 +101,65 @@ public class SensorDAO {
 		}
 		return vo;
 	}
+	
+	
+	
+	
+public ArrayList<SensorVO> Gps() {
+		
+		gpsal = new ArrayList<SensorVO>();
+		
+		try {
+		
+			
+			
+			conn();
+		
+		
+		// 4. SQLπÆ ¡ÿ∫Ò
+		String sql = "select hm_id,latitude,longitude from tbl_helmet";
+		
+		psmt = conn.prepareStatement(sql);
+
+		rs = psmt.executeQuery();
+		
+		
+		while (rs.next()) {
+
+			String hm_id = rs.getString("hm_id");
+			float latitude = rs.getFloat("latitude");
+			float longitude = rs.getFloat("longitude");
+			
+			System.out.println(hm_id);
+			System.out.println(latitude);
+			System.out.println(longitude);
+			
+			gpsvo = new SensorVO(latitude, longitude, hm_id);
+           
+			gpsal.add(gpsvo);
+
+		}
+		
+		
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+
+		}
+
+		return gpsal;
+		
+		
+		
+	}
+	
+	
+
+	
+	
+	
 	
 	
 	

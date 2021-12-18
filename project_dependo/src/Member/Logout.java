@@ -22,7 +22,7 @@ public class Logout extends HttpServlet {
 		
 				HttpSession session =  request.getSession();
 				
-				session.removeAttribute("member");
+				session.removeAttribute("ID");
 				
 				response.sendRedirect("./defendo/index_before.jsp");
 	

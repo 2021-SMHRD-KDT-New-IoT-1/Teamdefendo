@@ -1,8 +1,9 @@
-package Member;
+package Attendance;
 
 import java.sql.Date;
 
 public class AttendanceVO {
+	
 
 	String worker_id;
 	Date start_time;
@@ -36,5 +37,5 @@ public class AttendanceVO {
 	
 	
 	
-	
+
 }

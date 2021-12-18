@@ -21,7 +21,6 @@ public class Join extends HttpServlet {
 
       String id = request.getParameter("id");
       String password = request.getParameter("password");
-      
       String name = request.getParameter("name");
       String tel = request.getParameter("tel");
       String dept = request.getParameter("dept");

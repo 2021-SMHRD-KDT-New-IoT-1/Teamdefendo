@@ -1,6 +1,6 @@
-<%@page import="Member.GPSVO"%>
+<%@page import="Sensors.SensorVO"%>
+<%@page import="Sensors.SensorDAO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Member.SensorDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -162,7 +162,7 @@
 	<script>
 	
 		<% SensorDAO Sdao = new SensorDAO();
-		   ArrayList<GPSVO> gpsal = Sdao.Gps();
+		   ArrayList<SensorVO> gpsal = Sdao.Gps();
 		%>
 	
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

@@ -54,7 +54,7 @@
 		
 		<%
 		//현재 로그인 상태인지 판별 (vo == null -> 로그인 하지 않은 상태)	
-		String id = (String)session.getAttribute("member");
+		String id = (String)session.getAttribute("ID");
 		System.out.println(id);
 		%>
 		
@@ -62,7 +62,7 @@
          <nav class="main_nav_container">
             <div class="main_nav">
                <ul class="main_nav_list">
-               		<% if("admin".equals(id)){%> 
+               		<% if(id!=null){%> 
                		
                			
                	                 
