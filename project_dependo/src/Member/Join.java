@@ -27,21 +27,28 @@ public class Join extends HttpServlet {
       String dept = request.getParameter("dept");
       String check_manager = request.getParameter("check_manager");
       
-      System.out.println(id+"/"+password+"/"+name+"/"+tel+"/"+dept+"/"+check_manager);
+   
 
+    
+  	if(check_manager==null) {
+		check_manager="N";
+	}
       
+  	
+    System.out.println("Join서블릿 : "+id+"/"+password+"/"+name+"/"+tel+"/"+dept+"/"+check_manager);
+    
       MemberDAO dao= new MemberDAO();
-      
+    
       int cnt = dao.Join(id, password, name, tel, dept, check_manager);
       
       System.out.println(cnt);
       
       if(cnt > 0) {
          System.out.println("회원가입성공");
-         response.sendRedirect("./defendo/index_before.html");
+         response.sendRedirect("./defendo/index_before.jsp");
       }else {
          System.out.println("회원가입실패");
-         response.sendRedirect("./defendo/index_before.html");
+         response.sendRedirect("./defendo/index_before.jsp");
       }
       
       
