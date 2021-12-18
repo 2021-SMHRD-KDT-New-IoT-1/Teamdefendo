@@ -18,7 +18,8 @@ public class MemberDAO {
 	    int cnt;
 		boolean check;
 		MemberVO vo = null;
-		ResultSet rs1;
+		AttendanceVO avo = null;
+
 	 
 	    public void DBcon() {
 	         try {
@@ -175,45 +176,23 @@ public class MemberDAO {
 				
 				// 5. sql문 실행 후 결과 처리
 				rs = pstmt.executeQuery();
-				
-				
+			
 				
 				if (rs.next()) {
+					String worker_id = rs.getString("worker_id");
+					String worker_pw = rs.getString("worker_pw");
+					String worker_dept = rs.getString("worker_dept");
+					String worker_name = rs.getString("worker_name");
+					String worker_phone = rs.getString("worker_phone");
+					Date worker_joindate = rs.getDate("worker_joindate");
+					String admin_yesno = rs.getString("admin_yesno");
+					
 				
-					try {
-						System.out.println("11111번");
-
-						String sql1 = "select * FROM tbl_attendance where worker_id=?";
-						pstmt = con.prepareStatement(sql1);
-						pstmt.setString(1, id);
-						rs1 = pstmt.executeQuery();
-						
-						
-						
-						if (rs1.next()) {
-
-							
-							Date start_time= rs1.getDate("start_time"); 
-							Date end_time= rs1.getDate("end_time"); 
-							String att_type = rs1.getString("att_type");
-							
-							vo = new MemberVO(id, start_time, end_time, att_type);
-							System.out.println("222222번");
-						}
-					} catch (Exception e) {
-						
-						e.printStackTrace();
-					} finally {
-
-						if (rs1 != null) {
-							rs1.close();
-						}
-
-					}
-
-
+					vo = new MemberVO(worker_id, worker_pw, worker_dept, worker_name, worker_phone, worker_joindate, admin_yesno);
+				
 				}
 				
+
 
 			} catch (Exception e) {
 				
@@ -269,82 +248,53 @@ public class MemberDAO {
 		
 		
 	
-		public void StartTime(String worker_id,String start_time,String att_type) {
-			
-
-			try {
+		public AttendanceVO attendance(String worker_id) {
 			
 			
-			DBcon();
-
-			
-			String sql1 = "select worker_id FROM tbl_worker where worker_id=?";
-			
-
-			pstmt = con.prepareStatement(sql1);
-
-			// 4. 바인드 변수 채워두기
-			pstmt.setString(1, worker_id);
-			
-			// 5. sql문 실행 후 결과 처리
-			rs = pstmt.executeQuery();
-			
-			
-			
-			// 4. SQL문 준비
-			String sql2 = "insert into tbl_attendance(worker_id, start_time, att_type) values(?,?,?,)";
-			pstmt = con.prepareStatement(sql2);
-			pstmt.setString(1, worker_id);
-			pstmt.setString(2, start_time);
-			pstmt.setString(3, att_type);
 		
-			
-			cnt = pstmt.executeUpdate();
-		
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				DBclose();
+				try {
+					
+					DBcon();
 
-			}
+					String sql = "select * FROM tbl_attendance where worker_id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, worker_id);
+					rs = pstmt.executeQuery();
+					
+					
+					
+					if (rs.next()) {
+
+						
+						Date start_time= rs.getDate("start_time"); 
+						Date end_time= rs.getDate("end_time"); 
+						String att_type = rs.getString("att_type");
+						
+						avo = new AttendanceVO(worker_id, start_time, end_time, att_type);
+						
+						
+						
+					}
+				} catch (Exception e) {
+					
+					e.printStackTrace();
+				} finally {
+					DBclose();
+				}
+
+
 	
 			
-		}
+				return avo;
 		
-		
-		public void endTime(String worker_id,String end_time,String att_type) {
-			
-
-			try {
-			
-			
-			DBcon();
-
-			// 4. SQL문 준비
-			String sql = "update tbl_attendance(end_time, att_type) values(?,?) where id=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, end_time);
-			pstmt.setString(2, att_type);
-			pstmt.setString(3, worker_id);
-		
-			
-			cnt = pstmt.executeUpdate();
-		
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				DBclose();
-
-			}
-	
-			
 		}
 		
 		
 		
-	    
-	    
-	}
+		
+		
+		}
+		
 
 	
 

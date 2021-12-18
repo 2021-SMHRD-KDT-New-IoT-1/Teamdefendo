@@ -25,9 +25,6 @@ public class Login extends HttpServlet {
 		MemberVO vo;
 		vo=dao.Login(id,pw);
 		
-		if(vo!=null) {
-			System.out.println("vo ³Î ¾Æ´Ô");
-		}
 		
 		if(id.equals("admin")&&pw.equals("admin")) {
 			
