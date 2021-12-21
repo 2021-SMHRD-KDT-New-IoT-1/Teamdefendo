@@ -70,6 +70,7 @@
 								<li class="main_nav_item"><a href="All_Worker.jsp"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">직원 통합 관리</span></a></li>
 								<li class="main_nav_item"><a href="Location.jsp"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">직원 위치 확인</span></a></li>
 								<li class="main_nav_item"><a href="machine.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">기기등록</span></a></li>
+								<li class="main_nav_item"><a href="../Logout"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">로그아웃</span></a></li>
 							</ul>
 						</div>
 					</nav>
@@ -211,11 +212,16 @@
              <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">근로자 검색</span>
                 <div class="relative text-gray-500 focus-within:text-purple-600">
-                  <input 
+                  
+                 
+                  <input
+                  	id="workerName" 
                     class="block w-full pr-20 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
                     placeholder="근로자의 이름을 입력해주세요"/>
-                  <button class="absolute inset-y-0 right-0 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-r-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                  <button class="absolute inset-y-0 right-0 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-r-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                  onclick="nameCheck()">
                     Search</button>
+                    
                  </div>
               </label>
             </div>
@@ -237,14 +243,16 @@
                   
                           
                           <% MemberDAO dao = new MemberDAO();
+                         	
+                          ArrayList<MemberVO> al1 = dao.selectAll();
                          
-                          ArrayList<MemberVO> al1 = dao.selectAll();%>
+                          %>
                           
                           
                           <% 
                           for(int i=0; i<al1.size();i++){
                         	  %>
-                  <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                  <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" <%=al1.get(i).getWorker_name() %>>
                     <tr class="text-gray-700 dark:text-gray-400">
                       <td class="px-4 py-3">
                         <div class="flex items-center text-sm">
@@ -257,16 +265,16 @@
                             <div class="absolute inset-0 rounded-full shadow-inner"
                               aria-hidden="true"></div>
                           </div>
-                        	  <div>
+                        	  <div class="menu00">
                           <!-- 근로자 이름 -->
-                            <p class="font-semibold"><%=al1.get(i).getWorker_name() %></p>
+                            <p class="font-semibold wname"><%=al1.get(i).getWorker_name() %></p>
                           </div>
                         </div>
-                      </td>
+                      </td >
                       <%
                       if(al1.get(i).getHm_lock().equals("Y")){ %>
                     	  <!-- 안전모 턱끈 여부 - 확인 버전 -->
-                          <td class="px-4 py-3 text-xs">
+                          <td class="px-4 py-3 text-xs" >
                             <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
                             >확인</span>
                           </td>
@@ -274,7 +282,7 @@
                    <%    }else{%>
                    
                     <!-- 안전모 턱끈 - 미확인  -->
-                      <td class="px-4 py-3 text-xs">
+                      <td class="px-4 py-3 text-xs" >
                         <span
                           class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700"
                         >미확인</span>
@@ -286,7 +294,7 @@
                 	 
                 	 
                 	 <!-- 안전 교육 여부 - 확인 버전 -->
-                      <td class="px-4 py-3 text-xs">
+                      <td class="px-4 py-3 text-xs" >
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
                         >이수</span>
                       </td>
@@ -297,7 +305,7 @@
             	 
                       
                         <!-- 안전교육 - 미이수 -->
-                      <td class="px-4 py-3 text-xs">
+                      <td class="px-4 py-3 text-xs" >
                         <span
                           class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700"
                         >미이수</span>
@@ -315,7 +323,7 @@
                         
                         
                       <!-- 근로자 등록 일자 -->
-                      <td class="px-4 py-3 text-sm">
+                      <td class="px-4 py-3 text-sm" >
                         <%=al1.get(i).getWorker_joindate()  %>
                       </td>
                       <!-- 근로자 정보 수정/삭제 -->
@@ -557,5 +565,59 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		<script src="plugins/easing/easing.js"></script>
 		<script src="js/elements_custom.js"></script>
 		<script src="js/all_worker_content.js"></script>
+		
+		
+		<style>
+			.bar1{
+				visibility : visible;
+			}
+			.bar2{
+				visibility : hidden;
+			}
+			
+		</style>
+		<script>
+
+		function nameCheck() {
+	
+			var wN=document.getElementById("workerName").value;
+			var gN=document.getElementsByClassName("wname");
+			
+			
+			$(gN).each(function(){
+				if(wN == this.innerText){
+					//클래스 추가  bar1(보이게)  bar2(안보이게)
+					//bar1 추가 bar2 제거
+					// this.parentNode.parentNode.parentNode.parentNode.className += ' bar1';
+					$(this.parentNode.parentNode.parentNode.parentNode).addClass("bar1");
+					$(this.parentNode.parentNode.parentNode.parentNode).removeClass("bar2");
+
+
+				}else{
+					//bar2 추가 bar1제거
+					// this.parentNode.parentNode.parentNode.parentNode.className += ' bar2';
+					
+					$(this.parentNode.parentNode.parentNode.parentNode).addClass("bar2");
+					$(this.parentNode.parentNode.parentNode.parentNode).removeClass("bar1");
+
+
+					
+				}
+			});
+			
+		}
+		
+		
+		
+		
+		
+		
+		</script>
+		
+
 </body>
+
+
+
+
 </html>

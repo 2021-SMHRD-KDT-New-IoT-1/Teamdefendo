@@ -6,6 +6,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+
+import com.sun.jmx.snmp.Timestamp;
 
 import Member.MemberVO;
 
@@ -64,13 +67,13 @@ public class AttendanceDAO {
 
 	public AttendanceVO attendance(String worker_id) {
 		
-   
+		
 		    
 		try {
 			
 			DBcon();
 
-			String sql = "select * FROM tbl_attendance where worker_id=?";
+			String sql = "SELECT * FROM (SELECT * FROM tbl_attendance ORDER BY ROWNUM DESC) WHERE worker_id=? and ROWNUM = 1";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, worker_id);
 			rs = pstmt.executeQuery();
@@ -78,15 +81,12 @@ public class AttendanceDAO {
 			
 			
 			if (rs.next()) {
-
-				
-				Date start_time= rs.getDate("start_time"); 
-				Date end_time= rs.getDate("end_time"); 
+			
+				String start_time= rs.getString("start_time"); 
+				String end_time= rs.getString("end_time"); 
 				String att_type = rs.getString("att_type");
 				
 				avo = new AttendanceVO(worker_id, start_time, end_time, att_type);
-				
-				
 				
 			}
 		} catch (Exception e) {
@@ -124,7 +124,7 @@ public class AttendanceDAO {
 					
 					DBcon();
 
-					String sql2 = "select * FROM tbl_attendance where worker_id=?";
+					String sql2 = "SELECT * FROM (SELECT * FROM tbl_attendance ORDER BY ROWNUM DESC) WHERE worker_id=? and ROWNUM = 1";
 					pstmt = con.prepareStatement(sql2);
 					pstmt.setString(1, id);
 					ResultSet rs2 = pstmt.executeQuery();
@@ -134,8 +134,8 @@ public class AttendanceDAO {
 					if (rs2.next()) {
 
 						
-						Date start_time= rs2.getDate("start_time"); 
-						Date end_time= rs2.getDate("end_time"); 
+						String start_time= rs2.getString("start_time"); 
+						String end_time= rs2.getString("end_time"); 
 						String att_type = rs2.getString("att_type");
 						
 						avo = new AttendanceVO(id, start_time, end_time, att_type);

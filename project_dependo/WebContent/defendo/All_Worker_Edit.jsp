@@ -145,6 +145,7 @@
               <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">직원명</span>
                 <input
+                  maxlength="30"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   name="worker_name"
                   placeholder="수정할 이름을 입력해주세요"
@@ -155,6 +156,7 @@
               <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">직원ID</span>
                 <input
+                  maxlength="30"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   name="worker_id"
                   placeholder="수정할 ID을 입력해주세요"
@@ -196,6 +198,7 @@
                <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">개인 안전모 정보 수정</span>
                 <input
+                  maxlength="20"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   name="hm_id"
                   placeholder="수정할  개인 안정모 정보를 입력해주세요"
@@ -207,6 +210,7 @@
                <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">소속 수정</span>
                 <input
+                  maxlength="20"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   name="worker_dept"
                   placeholder="수정할  소속 정보를 입력해주세요"

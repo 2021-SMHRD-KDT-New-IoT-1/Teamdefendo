@@ -26,7 +26,7 @@ public class Login extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo;
 		vo=dao.Login(id,pw);
-		System.out.println(vo);
+		
 		
 		
 		if(vo.getAdmin_yesno().equals("Y")) {
@@ -42,10 +42,7 @@ public class Login extends HttpServlet {
 			
 			HttpSession session =request.getSession();
 			session.setAttribute("ID", id);
-			response.setContentType("text/html; charset=UTF-8"); 
-			PrintWriter writer = response.getWriter(); 
-			writer.println("<script>alert('로그인 성공'); location.href='./defendo/worker.jsp'</script>"); 
-			writer.close();
+			
 			response.sendRedirect("./defendo/worker.jsp");
 			
 

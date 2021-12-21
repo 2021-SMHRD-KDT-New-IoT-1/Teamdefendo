@@ -138,7 +138,6 @@ public class MemberDAO {
 
 	public MemberVO Login(String id, String pw) {
 
-		System.out.println(id + "//" + pw);
 		try {
 			DBcon();
 			System.out.println(con);
@@ -239,6 +238,52 @@ public class MemberDAO {
 		return cnt;
 		
 	}
+	
+	public ArrayList<MemberVO> select(String id) {
+		
+		al1 = new ArrayList<MemberVO>(); 
+		
+		try {
+			DBcon();
+
+			String sql = "select w.worker_id,w.worker_name, h.hm_lock, w.education, w.worker_joindate from tbl_helmet h,tbl_worker w where h.worker_id=w.worker_id and w.worker_id=?";
+
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+
+
+			while (rs.next()) {
+
+				
+				String worker_name = rs.getString("worker_name");
+				String hm_lock = rs.getString("hm_lock");
+				String education = rs.getString("education");
+				Date worker_joindate = rs.getDate("worker_joindate");
+				String worker_id = rs.getString("worker_id");
+			
+				
+				vo2 = new MemberVO(worker_name, worker_joindate, hm_lock, education, worker_id);
+							
+				
+				al1.add(vo2);
+				
+			}
+
+		} catch (Exception e) {
+			System.out.println("조회실패");
+			e.printStackTrace();
+		} finally {
+			DBclose();
+		}
+		return al1;
+		
+	}
+	
+	
+	
 	
 	public ArrayList<MemberVO> selectAll() {
 

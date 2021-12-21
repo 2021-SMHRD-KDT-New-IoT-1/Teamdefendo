@@ -1,11 +1,15 @@
 package Member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
 
 
 @WebServlet("/Join")
@@ -20,7 +24,7 @@ public class Join extends HttpServlet {
       
 
       String id = request.getParameter("id");
-      String password = request.getParameter("password");
+      String password = request.getParameter("pw");
       String name = request.getParameter("name");
       String tel = request.getParameter("tel");
       String dept = request.getParameter("dept");
@@ -34,20 +38,27 @@ public class Join extends HttpServlet {
 	}
       	
   	
-    System.out.println("Join서블릿 : "+id+"/"+password+"/"+name+"/"+tel+"/"+dept+"/"+check_manager);
     
       MemberDAO dao= new MemberDAO();
     
       int cnt = dao.Join(id, password, name, tel, dept, check_manager);
       
-      System.out.println(cnt);
+      PrintWriter out = response.getWriter();
+      out.print(cnt);
       
       if(cnt > 0) {
          System.out.println("회원가입성공");
          response.sendRedirect("./defendo/index_before.jsp");
+  
+         
+         
+         
+         
+         
       }else {
          System.out.println("회원가입실패");
          response.sendRedirect("./defendo/index_before.jsp");
+         
       }
       
       

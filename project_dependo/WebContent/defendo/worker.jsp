@@ -86,7 +86,7 @@ table.type11 th {
 				<!-- Logo -->
 				<div class="logo_container">
 					<div class="logo">
-						<a href="index_after.jsp"> <img src="images/logode.jpg"
+						<a href="worker.jsp"> <img src="images/logode.jpg"
 							alt="">
 						</a>
 					</div>
@@ -94,15 +94,16 @@ table.type11 th {
 
 			<%
 			//현재 로그인 상태인지 판별 (vo == null -> 로그인 하지 않은 상태)	
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
 			String id = (String)session.getAttribute("ID");
 			AttendanceDAO dao = new AttendanceDAO();
 			AttendanceVO vo = dao.attendance(id);
 			
-			SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
-			
 			
 			%>
-
+	
+			
 				<!-- Main Navigation -->
 				<nav class="main_nav_container">
 					<div class="main_nav">
@@ -211,7 +212,7 @@ table.type11 th {
 									color="black">출근</font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;"><font
-									color="black"><%=sdf.format(vo.getStart_time()) %></font></td>
+									color="black"><%=vo.getStart_time().substring(11,19)%></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px; background: #1A1A1A; border: 2px solid black;"><font
 									color="#FFFFFF">복귀</font></td>
@@ -231,7 +232,7 @@ table.type11 th {
 									color="black">퇴근</font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;"><font
-									color="black"><%=sdf.format(vo.getEnd_time()) %></font></td>
+									color="black"><%=vo.getEnd_time().substring(11,19) %></font></td>
 							</tr>
 						</tbody>
 					</table>
@@ -268,10 +269,10 @@ table.type11 th {
 							<tr>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px; border: 2px solid #C0C0C0; background: #C0C0C0; "><font
-									color="#FFFFFF"><%=vo.getStart_time() %></font></td>
+									color="#FFFFFF"><%=vo.getStart_time().substring(0,11) %></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;border: 2px solid #C0C0C0; background: #C0C0C0;"><font
-									color="#FFFFFF"><%=sdf.format(vo.getStart_time()) %></font></td>
+									color="#FFFFFF"><%=vo.getStart_time().substring(11,19) %></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px; border: 2px solid #C0C0C0; background: #C0C0C0;"><font
 									color="#FFFFFF">-</font></td>
@@ -280,7 +281,7 @@ table.type11 th {
 									color="#FFFFFF">-</font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;border: 2px solid #C0C0C0; background: #C0C0C0;"><font
-									color="#FFFFFF"><%=sdf.format(vo.getEnd_time()) %></font></td>
+									color="#FFFFFF"><%=vo.getEnd_time().substring(11,19) %></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;border: 2px solid #C0C0C0; background: #C0C0C0;"><font
 									color="#FFFFFF">출근</font></td>

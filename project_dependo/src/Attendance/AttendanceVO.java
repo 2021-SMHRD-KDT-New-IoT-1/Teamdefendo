@@ -6,14 +6,14 @@ public class AttendanceVO {
 	
 
 	String worker_id;
-	Date start_time;
-	Date end_time; 
+	String start_time;
+	String end_time; 
 	String att_type;
 	
 	
 	
 	
-	public AttendanceVO(String worker_id, Date start_time, Date end_time, String att_type) {
+	public AttendanceVO(String worker_id, String start_time, String end_time, String att_type) {
 	
 		this.worker_id = worker_id;
 		this.start_time = start_time;
@@ -24,10 +24,10 @@ public class AttendanceVO {
 	public String getWorker_id() {
 		return worker_id;
 	}
-	public Date getStart_time() {
+	public String getStart_time() {
 		return start_time;
 	}
-	public Date getEnd_time() {
+	public String getEnd_time() {
 		return end_time;
 	}
 	public String getAtt_type() {
