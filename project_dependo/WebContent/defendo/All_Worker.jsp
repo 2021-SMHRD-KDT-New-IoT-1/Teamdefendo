@@ -1,3 +1,9 @@
+<%@page import="Member.MemberVO"%>
+<%@page import="java.util.ArrayList"%>
+
+<%@page import="Member.MemberDAO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,9 +67,9 @@
 					<nav class="main_nav_container">
 						<div class="main_nav">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="All_Worker.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">ÏßÅÏõê ÌÜµÌï© Í¥ÄÎ¶¨</span></a></li>
-								<li class="main_nav_item"><a href="Location.jsp"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">ÏßÅÏõê ÏúÑÏπò ÌôïÏù∏</span></a></li>
-								<li class="main_nav_item"><a href="machine.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">Í∏∞Í∏∞Îì±Î°ù</span></a></li>
+								<li class="main_nav_item"><a href="All_Worker.jsp"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">¡˜ø¯ ≈Î«’ ∞¸∏Æ</span></a></li>
+								<li class="main_nav_item"><a href="Location.jsp"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">¡˜ø¯ ¿ßƒ° »Æ¿Œ</span></a></li>
+								<li class="main_nav_item"><a href="machine.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">±‚±‚µÓ∑œ</span></a></li>
 							</ul>
 						</div>
 					</nav>
@@ -131,10 +137,10 @@
 
 		<div class="elements" style="font-family: 'Dolbomche_R' !important;">
 		
-		<!--ÏÇ¨Ïö©Ïûê Í¥ÄÎ¶¨-->
+		<!--ªÁøÎ¿⁄ ∞¸∏Æ-->
 		<main class="h-full overflow-y-auto" >
           <div class="container px-6 mx-auto grid" style="margin-bottom: 55px; font-family: 'Dolbomche_R' !important;"">
-            <h2 class="my-6 text-2xl text-gray-700 dark:text-gray-200" style="font-family:'SLEIGothicTTF' !important; font-size:40px;">ÏßÅÏõê ÌÜµÌï© Í¥ÄÎ¶¨</h2>
+            <h2 class="my-6 text-2xl text-gray-700 dark:text-gray-200" style="font-family:'SLEIGothicTTF' !important; font-size:40px;">¡˜ø¯ ≈Î«’ ∞¸∏Æ</h2>
             <!-- Cards -->
             <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4" style="padding-top: 70px;">
               <!-- Card -->
@@ -146,9 +152,9 @@
                   </svg>
                 </div>
                 <div>
-                <!-- Ï¥ù Í∑ºÎ°úÏûê Ïàò  -->
+                <!-- √— ±Ÿ∑Œ¿⁄ ºˆ  -->
                   <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                   Ï¥ù Í∑ºÎ°úÏûê Ïàò</p>
+                                   √— ±Ÿ∑Œ¿⁄ ºˆ</p>
                   <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     6389</p>
                 </div>
@@ -162,10 +168,10 @@
                       clip-rule="evenodd"></path>
                   </svg>
                 </div>
-                <!-- ÏïàÏ†ÑÎ™® ÌÑ±ÎÅà&ÏïàÏ†ÑÍµêÏú° Î™®Îëê ÌôïÏù∏ Îêú Í∑ºÎ°úÏûê Ïàò -->
+                <!-- æ»¿¸∏ ≈Œ≤ˆ&æ»¿¸±≥¿∞ ∏µŒ »Æ¿Œ µ» ±Ÿ∑Œ¿⁄ ºˆ -->
                 <div>
                   <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                   Ï¥ù Ïù¥ÏàòÏûê Ïàò
+                                   √— ¿Ãºˆ¿⁄ ºˆ
                   </p>
                   <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     300
@@ -190,7 +196,7 @@
                 </div>
                 <div>
                   <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                    ÎØ∏Ïù¥Ïàò Í∑ºÎ°úÏûê Ïàò              
+                                    πÃ¿Ãºˆ ±Ÿ∑Œ¿⁄ ºˆ              
                   </p>
                   <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     100
@@ -200,14 +206,14 @@
               </div>
             </div>
 
-			<!-- Í∑ºÎ°úÏûê Í≤ÄÏÉâ -->
+			<!-- ±Ÿ∑Œ¿⁄ ∞Àªˆ -->
 			<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-xs dark:bg-gray-800">
              <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Í∑ºÎ°úÏûê Í≤ÄÏÉâ</span>
+                <span class="text-gray-700 dark:text-gray-400">±Ÿ∑Œ¿⁄ ∞Àªˆ</span>
                 <div class="relative text-gray-500 focus-within:text-purple-600">
                   <input 
                     class="block w-full pr-20 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
-                    placeholder="Í∑ºÎ°úÏûêÏùò Ïù¥Î¶ÑÏùÑ ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî"/>
+                    placeholder="±Ÿ∑Œ¿⁄¿« ¿Ã∏ß¿ª ¿‘∑¬«ÿ¡÷ººø‰"/>
                   <button class="absolute inset-y-0 right-0 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-r-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                     Search</button>
                  </div>
@@ -215,20 +221,29 @@
             </div>
 
 
-            <!-- ÏßÅÏõê Í¥ÄÎ¶¨ Table -->
+            <!-- ¡˜ø¯ ∞¸∏Æ Table -->
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
               <div class="w-full overflow-x-auto">
                 <table class="w-full whitespace-no-wrap">
                   <thead>
                     <tr class="text-xs tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                      <th class="px-4 py-3">ÏßÅÏõêÎ™Ö</th>
-                      <th class="px-4 py-3">ÏïàÏ†ÑÎ™® ÌÑ±ÎÅà Ïó¨Î∂Ä</th>
-                      <th class="px-4 py-3">ÏïàÏ†Ñ ÍµêÏú° ÏàòÎ£å Ïó¨Î∂Ä</th>
-                      <th class="px-4 py-3">Îì±Î°ù ÎÇ†Ïßú</th>
-                      <th class="px-4 py-3">Í∑ºÎ°úÏûê Ï†ïÎ≥¥ ÏàòÏ†ï/ÏÇ≠Ï†ú</th>
+                      <th class="px-4 py-3">¡˜ø¯∏Ì</th>
+                      <th class="px-4 py-3">æ»¿¸∏ ≈Œ≤ˆ ø©∫Œ</th>
+                      <th class="px-4 py-3">æ»¿¸ ±≥¿∞ ºˆ∑· ø©∫Œ</th>
+                      <th class="px-4 py-3">µÓ∑œ ≥Ø¬•</th>
+                      <th class="px-4 py-3">±Ÿ∑Œ¿⁄ ¡§∫∏ ºˆ¡§/ªË¡¶</th>
                     </tr>
                   </thead>
                   
+                          
+                          <% MemberDAO dao = new MemberDAO();
+                         
+                          ArrayList<MemberVO> al1 = dao.selectAll();%>
+                          
+                          
+                          <% 
+                          for(int i=0; i<al1.size();i++){
+                        	  %>
                   <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     <tr class="text-gray-700 dark:text-gray-400">
                       <td class="px-4 py-3">
@@ -242,31 +257,72 @@
                             <div class="absolute inset-0 rounded-full shadow-inner"
                               aria-hidden="true"></div>
                           </div>
-                          <div>
-                          <!-- Í∑ºÎ°úÏûê Ïù¥Î¶Ñ -->
-                            <p class="font-semibold">ÍπÄÏ∞¨Ïö±</p>
+                        	  <div>
+                          <!-- ±Ÿ∑Œ¿⁄ ¿Ã∏ß -->
+                            <p class="font-semibold"><%=al1.get(i).getWorker_name() %></p>
                           </div>
                         </div>
                       </td>
-                      <!-- ÏïàÏ†ÑÎ™® ÌÑ±ÎÅà Ïó¨Î∂Ä - ÌôïÏù∏ Î≤ÑÏ†Ñ -->
+                      <%
+                      if(al1.get(i).getHm_lock().equals("Y")){ %>
+                    	  <!-- æ»¿¸∏ ≈Œ≤ˆ ø©∫Œ - »Æ¿Œ πˆ¿¸ -->
+                          <td class="px-4 py-3 text-xs">
+                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+                            >»Æ¿Œ</span>
+                          </td>
+                    	  
+                   <%    }else{%>
+                   
+                    <!-- æ»¿¸∏ ≈Œ≤ˆ - πÃ»Æ¿Œ  -->
+                      <td class="px-4 py-3 text-xs">
+                        <span
+                          class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700"
+                        >πÃ»Æ¿Œ</span>
+                      </td>
+                   
+                	   
+                 <% }
+                 if(al1.get(i).getEducation().equals("Y")){%>
+                	 
+                	 
+                	 <!-- æ»¿¸ ±≥¿∞ ø©∫Œ - »Æ¿Œ πˆ¿¸ -->
                       <td class="px-4 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
-                        >ÌôïÏù∏</span>
+                        >¿Ãºˆ</span>
                       </td>
-                      <!-- ÏïàÏ†Ñ ÍµêÏú° Ïó¨Î∂Ä - ÌôïÏù∏ Î≤ÑÏ†Ñ -->
+                	 
+                	 
+                	 
+             <%    }else{%>
+            	 
+                      
+                        <!-- æ»¿¸±≥¿∞ - πÃ¿Ãºˆ -->
                       <td class="px-4 py-3 text-xs">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
-                        >Ïù¥Ïàò</span>
+                        <span
+                          class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700"
+                        >πÃ¿Ãºˆ</span>
                       </td>
-                      <!-- Í∑ºÎ°úÏûê Îì±Î°ù ÏùºÏûê -->
+                      
+                        	  
+            	 
+            	 
+         <%    }
+                 
+                 %>
+                        
+                        
+                        
+                        
+                        
+                      <!-- ±Ÿ∑Œ¿⁄ µÓ∑œ ¿œ¿⁄ -->
                       <td class="px-4 py-3 text-sm">
-                        6/10/2020
+                        <%=al1.get(i).getWorker_joindate()  %>
                       </td>
-                      <!-- Í∑ºÎ°úÏûê Ï†ïÎ≥¥ ÏàòÏ†ï/ÏÇ≠Ï†ú -->
+                      <!-- ±Ÿ∑Œ¿⁄ ¡§∫∏ ºˆ¡§/ªË¡¶ -->
                       <td class="px-4 py-3">
                        <div class="flex items-center space-x-4 text-sm">
                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                            aria-label="Edit" onclick="location.href='All_Worker_Edit.html'">
+                            aria-label="Edit" onclick="location.href='All_Worker_Edit.jsp?id=<%=al1.get(i).getWorker_id()%>'" >
                             <svg class="w-5 h-5"
                               aria-hidden="true"
                               fill="currentColor"
@@ -274,9 +330,11 @@
                               <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
                             </svg>
                           </button>
+                          
+                          
                           <button
                             class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                            aria-label="Delete">
+                            aria-label="Delete" onclick="location.href='../Delete?id=<%=al1.get(i).getWorker_id()%>'">
                             <svg
                               class="w-5 h-5"
                               aria-hidden="true"
@@ -291,75 +349,14 @@
                           </div>
                       </td>
                     </tr>
-
-
-                    <tr class="text-gray-700 dark:text-gray-400">
-                      <td class="px-4 py-3">
-                        <div class="flex items-center text-sm">
-                          <div
-                            class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                            <img
-                              class="object-cover w-full h-full rounded-full"
-                              src="images/Default_Profile.png"
-                              alt=""
-                              loading="lazy"
-                            />
-                            <div
-                              class="absolute inset-0 rounded-full shadow-inner"
-                              aria-hidden="true"
-                            ></div>
-                          </div>
-                          <div>
-                          <!-- Í∑ºÎ°úÏûê Ïù¥Î¶Ñ -->
-                            <p class="font-semibold">ÍπÄÏ∞¨Ïö±2</p>
-                            
-                          </div>
-                        </div>
-                      </td>
-                      <!-- ÏïàÏ†ÑÎ™® ÌÑ±ÎÅà - ÎØ∏ÌôïÏù∏  -->
-                      <td class="px-4 py-3 text-xs">
-                        <span
-                          class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700"
-                        >ÎØ∏ÌôïÏù∏</span>
-                      </td>
-                      <!-- ÏïàÏ†ÑÍµêÏú° - ÎØ∏Ïù¥Ïàò -->
-                      <td class="px-4 py-3 text-xs">
-                        <span
-                          class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700"
-                        >ÎØ∏Ïù¥Ïàò</span>
-                      </td>
-                      <!-- Îì±Î°ù ÏùºÏûê -->
-                      <td class="px-4 py-3 text-sm">
-                        6/10/2020
-                      </td>
-                      <td class="px-4 py-3">
-                       <div class="flex items-center space-x-4 text-sm">
-                         <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                            aria-label="Edit" onclick="location.href='All_Worker_Edit.html'">
-                            <svg class="w-5 h-5"
-                              aria-hidden="true"
-                              fill="currentColor"
-                              viewBox="0 0 20 20">
-                              <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                            </svg>
-                          </button>
-                          <button
-                            class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                            aria-label="Delete">
-                            <svg
-                              class="w-5 h-5"
-                              aria-hidden="true"
-                              fill="currentColor"
-                              viewBox="0 0 20 20">
-                              <path
-                                fill-rule="evenodd"
-                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                clip-rule="evenodd"></path>
-                            </svg>
-                          </button>
-                          </div>
-                      </td>
-                    </tr>
+                        
+                        
+                        
+                        	  
+                     <%     } %>
+                          
+                          
+              
 
                   </tbody>
                 </table>
@@ -493,8 +490,8 @@
 						</div>
 
 						<p class="footer_about_text">
-							Ïï±Í≥º ÏõπÏùÑ ÌÜµÌïú 
-							<br>ÎÖ∏ÎèôÏûê ÌÜµÌï© ÏïàÏ†Ñ Í¥ÄÎ¶¨ ÏãúÏä§ÌÖú
+							æ€∞˙ ¿•¿ª ≈Î«— 
+							<br>≥Îµø¿⁄ ≈Î«’ æ»¿¸ ∞¸∏Æ Ω√Ω∫≈€
 							<br><h3>defendo</h3>
 						</p>
 

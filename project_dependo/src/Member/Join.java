@@ -16,7 +16,7 @@ public class Join extends HttpServlet {
 
    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	   request.setCharacterEncoding("euc-kr");
+	  request.setCharacterEncoding("euc-kr");
       
 
       String id = request.getParameter("id");

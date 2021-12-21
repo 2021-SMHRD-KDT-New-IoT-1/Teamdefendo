@@ -41,7 +41,7 @@ public class Update extends HttpServlet {
 					System.out.println("수정성공");
 					response.setContentType("text/html; charset=UTF-8"); 
 					PrintWriter writer = response.getWriter(); 
-					writer.println("<script>alert('회원정도 수정성공'); location.href='./defendo/index_before.jsp'</script>"); 
+					writer.println("<script>alert('회원정보 수정성공'); location.href='./defendo/index_before.jsp'</script>"); 
 					writer.close();
 					
 				}else {

@@ -64,15 +64,15 @@ public class HmDAO {
 	public int Hmregistration(String hm_id, String worker_id) {
 		
 		try {
-	
+			
 		
 			DBcon();
-
+			System.out.print("값 확인");
 			// 4. SQL문 준비
-			String sql = "insert into tbl_helmet_use(worker_id, hm_id) values(?,?)";
+			String sql = "insert into tbl_helmet(HM_SEQ,worker_id, hm_id,HM_IMPACT_SENSOR,HM_GAS_SENSOR,LATITUDE,LONGITUDE,HM_LOCK) values(TBL_HELMET_SEQ.nextval,?,?,0,0,0,0,0)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, hm_id);
-			pstmt.setString(2, worker_id);
+			pstmt.setString(1, worker_id);
+			pstmt.setString(2, hm_id);
 		
 			cnt = pstmt.executeUpdate();
 		
@@ -88,6 +88,40 @@ public class HmDAO {
 			
 			
 		}
+	
+	public int update(String hm_id, String worker_id) {
+		
+		try {
+
+			DBcon();
+			
+			
+			// 4. SQL문 준비
+			String sql = "UPDATE tbl_helmet SET worker_id=? WHERE hm_id =?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, worker_id);
+			pstmt.setString(2, hm_id);
+		
+			
+
+			cnt = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBclose();
+
+		}
+	
+		
+		
+		return cnt;
+	}
+	
+		
+	}
+	
 		
 
-}
+

@@ -22,7 +22,7 @@
     font-family: 'SLEIGothicTTF';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
     font-weight: normal;
-    font-style: normal;
+    font-style: normal;	
     font-size: 35px;
 }
 @font-face {
@@ -48,7 +48,7 @@
          <!-- Logo -->
          <div class="logo_container">
             <div class="logo">
-               <a href="#"><img src="images/logode.jpg" alt=""></a>
+               <a href="index_after.jsp"><img src="images/logode.jpg" alt=""></a>
             </div>
          </div>
 		
@@ -66,15 +66,16 @@
                		
                			
                	                 
-               	  <li class="main_nav_item"><a href="All_Worker.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">직원 통합 관리</span></a></li>                 
+               	  <li class="main_nav_item"><a href="All_Worker.jsp"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">직원 통합 관리</span></a></li>                 
                   <li class="main_nav_item"><a href="Location.jsp"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">직원 위치 확인</span></a></li>
                   <li class="main_nav_item"><a href="machine.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">기기등록</span></a></li>
                   <li class="main_nav_item"><a href="../Logout"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">로그아웃</span></a></li>
             
             
              <% }else{%>
-               		<li class="main_nav_item"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">관리자 페이지입니다.</span></a></li>                 
-               	  
+               		<li class="main_nav_item"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">관리자 페이지입니다. 근로자는 정보를 볼 수 없습니다.</span></a></li>                 
+               	  	<li class="main_nav_item"><a href="../Logout"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">로그아웃</span></a></li>
+            
                		<%}%>
                		
             

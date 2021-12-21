@@ -12,6 +12,28 @@ public class MemberVO {
 	Date worker_joindate;
 	String admin_yesno;
 	
+	String hm_lock;
+	String education;
+	
+	
+	
+	
+	public String getHm_lock() {
+		return hm_lock;
+	}
+
+
+
+
+
+	public String getEducation() {
+		return education;
+	}
+
+
+
+
+
 	public MemberVO(String worker_id, String worker_pw, String worker_dept, String worker_name, String worker_phone,
 			Date worker_joindate, String admin_yesno) {
 		
@@ -23,6 +45,23 @@ public class MemberVO {
 		this.worker_joindate = worker_joindate;
 		this.admin_yesno = admin_yesno;
 	}
+	
+	
+	
+	
+
+	public MemberVO(String worker_name, Date worker_joindate, String hm_lock, String education,String worker_id) {
+		
+		this.worker_id = worker_id;
+		this.worker_name = worker_name;
+		this.worker_joindate = worker_joindate;
+		this.hm_lock = hm_lock;
+		this.education = education;
+	}
+
+
+
+
 
 	public String getWorker_id() {
 		return worker_id;

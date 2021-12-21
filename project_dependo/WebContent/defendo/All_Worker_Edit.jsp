@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Course - Elements</title>
-<meta charset="utf-8">
+<meta charset="EUC-KR">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Course Project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,7 +53,7 @@
          <!-- Logo -->
          <div class="logo_container">
             <div class="logo">
-               <a href="index_after.html">
+               <a href="index_after.jsp">
                <img src="images/logode.jpg" alt="">
                </a>
             </div>
@@ -61,9 +63,9 @@
 					<nav class="main_nav_container">
 						<div class="main_nav">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="All_Worker.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">ì§ì› í†µí•© ê´€ë¦¬</span></a></li>
-								<li class="main_nav_item"><a href="Location.jsp"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">ì§ì› ìœ„ì¹˜ í™•ì¸</span></a></li>
-								<li class="main_nav_item"><a href="machine.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">ê¸°ê¸°ë“±ë¡</span></a></li>
+								<li class="main_nav_item"><a href="All_Worker.jsp"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">Á÷¿ø ÅëÇÕ °ü¸®</span></a></li>
+								<li class="main_nav_item"><a href="Location.jsp"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">Á÷¿ø À§Ä¡ È®ÀÎ</span></a></li>
+								<li class="main_nav_item"><a href="machine.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">±â±âµî·Ï</span></a></li>
 							</ul>
 						</div>
 					</nav>
@@ -115,7 +117,7 @@
 
 		<!-- Home -->
 
-		
+		<% String id= request.getParameter("id");  %>
 
 
 		<div class="home">
@@ -129,27 +131,33 @@
 		</div>
 
 		<!-- Elements -->
-
+	<form action="../Update2" id="update2" method="post">
+	
+		<input type="hidden" name="id" value="<%=id%>">
+		
+		
 		<div class="elements" style="font-family: 'Dolbomche_R' !important;">
 		 <div class="container px-6 mx-auto grid" style="margin-bottom: 55px; font-family: 'Dolbomche_R' !important;">
 		
 		 <!-- General elements -->
-           <h2 class="my-6 text-2xl text-gray-700 dark:text-gray-200" style="font-family:'SLEIGothicTTF' !important; font-size:40px;">ì§ì› ì •ë³´ ìˆ˜ì •</h2>
+           <h2 class="my-6 text-2xl text-gray-700 dark:text-gray-200" style="font-family:'SLEIGothicTTF' !important; font-size:40px;">Á÷¿ø Á¤º¸ ¼öÁ¤</h2>
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
               <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">ì§ì›ëª…</span>
+                <span class="text-gray-700 dark:text-gray-400">Á÷¿ø¸í</span>
                 <input
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="ìˆ˜ì •í•  ì´ë¦„ì„ ìž…ë ¥í•´ì£¼ì„¸ìš”"
+                  name="worker_name"
+                  placeholder="¼öÁ¤ÇÒ ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä"
                 />
               </label>
 
 			<div class="mt-4 text-sm">
               <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">ì§ì›ID</span>
+                <span class="text-gray-700 dark:text-gray-400">Á÷¿øID</span>
                 <input
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="ìˆ˜ì •í•  IDì„ ìž…ë ¥í•´ì£¼ì„¸ìš”"
+                  name="worker_id"
+                  placeholder="¼öÁ¤ÇÒ IDÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä"
                 />
               </label>
               </div>
@@ -157,7 +165,7 @@
 
               <div class="mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">
-                             ê´€ë¦¬ìž/ê·¼ë¡œìž ì—¬ë¶€
+                             °ü¸®ÀÚ/±Ù·ÎÀÚ ¿©ºÎ
                 </span>
                 <div class="mt-2">
                   <label
@@ -166,7 +174,7 @@
                       type="radio"
                       class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                       name="accountType"
-                      value="worker"
+                      value="N"
                     />
                     <span class="ml-2">Worker</span>
                   </label>
@@ -177,56 +185,54 @@
                       type="radio"
                       class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                       name="accountType"
-                      value="admin"
+                      value="Y"
                     />
                     <span class="ml-2">Admin</span>
                   </label>
                 </div>
               </div>
-
-              <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">
-                                ê°œì¸ ì•ˆì „ëª¨ ì •ë³´ ìˆ˜ì •
-                </span>
-                <select class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                  <option>A-1</option>
-                  <option>A-2</option>
-                  <option>B-1</option>
-                  <option>B-2</option>
-                </select>
-              </label>
-
-
-
-            <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">
-                                ì†Œì† ìˆ˜ì •
-                </span>
-                <select class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                  <option>íšŒì‚¬A</option>
-                  <option>íšŒì‚¬B</option>
-                  <option>íšŒì‚¬C</option>
-                  <option>íšŒì‚¬D</option>
-                </select>
+              
+              <br>
+               <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">°³ÀÎ ¾ÈÀü¸ð Á¤º¸ ¼öÁ¤</span>
+                <input
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  name="hm_id"
+                  placeholder="¼öÁ¤ÇÒ  °³ÀÎ ¾ÈÁ¤¸ð Á¤º¸¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä"
+                />
               </label>
               
+          	<br>
+                
+               <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">¼Ò¼Ó ¼öÁ¤</span>
+                <input
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  name="worker_dept"
+                  placeholder="¼öÁ¤ÇÒ  ¼Ò¼Ó Á¤º¸¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä"
+                />
+              </label>
+              
+              
+              <br><br>
+              
+
 
               <div class="mt-4 text-sm" align="right">
-                <button
+                <input
                   class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-                  type="submit">
-                              ìˆ˜ì • ì €ìž¥
-                </button>
+                  type="submit" value="¼öÁ¤ÀúÀå">
+                           
               </div>
             </div>
 		</div>
-		
-
-			
 
 		</div>
-
+	</from>
 			<!-- Footer -->
+
+
+
 
 	<footer class="footer">
 		<div class="container">
@@ -247,8 +253,8 @@
 						</div>
 
 						<p class="footer_about_text">
-							ì•±ê³¼ ì›¹ì„ í†µí•œ 
-							<br>ë…¸ë™ìž í†µí•© ì•ˆì „ ê´€ë¦¬ ì‹œìŠ¤í…œ
+							¾Û°ú À¥À» ÅëÇÑ 
+							<br>³ëµ¿ÀÚ ÅëÇÕ ¾ÈÀü °ü¸® ½Ã½ºÅÛ
 							<br><h3>defendo</h3>
 						</p>
 

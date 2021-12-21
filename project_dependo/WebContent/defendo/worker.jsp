@@ -107,11 +107,12 @@ table.type11 th {
 				<nav class="main_nav_container">
 					<div class="main_nav">
 						<ul class="main_nav_list">
-							<li class="main_nav_item"><a href="worker.html"><span
+							<li class="main_nav_item"><a href="worker.jsp"><span
 									style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size: 18px;">출결
 										관리</span></a></li>
 							<li class="main_nav_item"><a href="w_mypage.jsp"><span
 									style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size: 18px;">마이페이지</span></a></li>
+									<li class="main_nav_item"><a href="../Logout"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">로그아웃</span></a></li>
 
 						</ul>
 					</div>

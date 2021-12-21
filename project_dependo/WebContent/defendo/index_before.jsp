@@ -48,7 +48,7 @@
 			<!-- Logo -->
 			  <div class="logo_container">
             <div class="logo">
-               <a href="index_after.html">
+               <a href="index_before.jsp">
                <img src="images/logode.jpg" alt="">
                </a>
             </div>
@@ -60,6 +60,7 @@
 					<ul class="main_nav_list">
 						<li class="main_nav_item"><a href="Login.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">login</span></a></li>
 						<li class="main_nav_item"><a href="JoinPage.html"><span style="font-family: 'SpoqaHanSansNeo-Medium' !important; font-size:18px;">join us</span></a></li>
+						
 					</ul>
 				</div>
 			</nav>

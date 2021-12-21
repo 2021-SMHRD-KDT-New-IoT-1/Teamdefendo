@@ -26,6 +26,7 @@ public class Login extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo;
 		vo=dao.Login(id,pw);
+		System.out.println(vo);
 		
 		
 		if(vo.getAdmin_yesno().equals("Y")) {

@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import Member.MemberVO;
+
 public class AttendanceDAO {
 	
 	Connection con;
@@ -97,9 +99,78 @@ public class AttendanceDAO {
 		return avo;
 
 }
+	
+	public AttendanceVO LoginTime(String id, String pw) {
 
+		System.out.println(id + "//" + pw);
+		try {
+			DBcon();
+
+			String sql = "select * FROM tbl_worker where worker_id=? and worker_pw=?";
+
+			pstmt = con.prepareStatement(sql);
+
+			// 4. 바인드 변수 채워두기
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
+
+			// 5. sql문 실행 후 결과 처리
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+			
+				
+				try {
+					
+					DBcon();
+
+					String sql2 = "select * FROM tbl_attendance where worker_id=?";
+					pstmt = con.prepareStatement(sql2);
+					pstmt.setString(1, id);
+					ResultSet rs2 = pstmt.executeQuery();
+					
+				
+					
+					if (rs2.next()) {
+
+						
+						Date start_time= rs2.getDate("start_time"); 
+						Date end_time= rs2.getDate("end_time"); 
+						String att_type = rs2.getString("att_type");
+						
+						avo = new AttendanceVO(id, start_time, end_time, att_type);
+						
+						
+						
+					}
+				} catch (Exception e) {
+					
+					e.printStackTrace();
+				} finally {
+					DBclose();
+				}
+
+
+			}
+
+		} catch (Exception e) {
+
+			System.out.println("로그인실패");
+			e.printStackTrace();
+
+		} finally {
+
+			DBclose();
+
+		}
+		
+		return avo;
+
+
+
+	}
 	
-	
+
 	
 	
 }

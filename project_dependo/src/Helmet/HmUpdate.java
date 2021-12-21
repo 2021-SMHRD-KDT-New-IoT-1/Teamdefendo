@@ -9,11 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/Hmregistration")
-public class Hmregistration extends HttpServlet {
+@WebServlet("/HmUpdate")
+public class HmUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -27,20 +25,22 @@ public class Hmregistration extends HttpServlet {
 		
 		 HmDAO dao = new HmDAO();
 		
-	      int cnt = dao.Hmregistration(hm_id, worker_id);
+	      int cnt = dao.update(hm_id, worker_id);
 	      System.out.println(cnt);
 	      
 	      if(cnt > 0) {
-	         System.out.println("Çï¸äµî·Ï¼º°ø");
+	         System.out.println("Çï¸ä¼öÁ¤¼º°ø");
 	     	
 			response.setContentType("text/html; charset=UTF-8"); 
 			PrintWriter writer = response.getWriter(); 
-			writer.println("<script>alert('Çï¸Ë Á¤º¸ µî·Ï ¼º°ø'); location.href='./defendo/index_after.jsp'</script>"); 
+			writer.println("<script>alert('Çï¸Ë Á¤º¸ ¼öÁ¤ ¼º°ø'); location.href='./defendo/machine.html'</script>"); 
 			writer.close();
 	         
 	      }else {
-	         System.out.println("Çï¸äµî·Ï½ÇÆÐ");
-	         response.sendRedirect("./defendo/machine.html");
+	         System.out.println("Çï¸ä¼öÁ¤½ÇÆÐ");
+	         PrintWriter writer = response.getWriter(); 
+				writer.println("<script>alert('Çï¸Ë Á¤º¸ ¼öÁ¤ ½ÇÆÐ'); location.href='./defendo/machine.html'</script>"); 
+				writer.close();
 	      }
 	      
 		
