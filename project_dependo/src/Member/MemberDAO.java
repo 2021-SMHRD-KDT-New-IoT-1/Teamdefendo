@@ -159,7 +159,7 @@ public class MemberDAO {
 				String worker_dept = rs.getString("worker_dept");
 				String worker_name = rs.getString("worker_name");
 				String worker_phone = rs.getString("worker_phone");
-				Date worker_joindate = rs.getDate("worker_joindate");
+				String worker_joindate = rs.getString("worker_joindate");
 				String admin_yesno = rs.getString("admin_yesno");
 
 				vo = new MemberVO(worker_id, worker_pw, worker_dept, worker_name, worker_phone, worker_joindate,
@@ -181,6 +181,55 @@ public class MemberDAO {
 		return vo;
 
 	}
+	
+	
+	public MemberVO AndroidLogin(String id, String pw) {
+
+		try {
+			DBcon();
+			System.out.println(con);
+
+			String sql = "select * FROM tbl_worker where worker_id=? and worker_pw=?";
+
+			pstmt = con.prepareStatement(sql);
+
+			// 4. 바인드 변수 채워두기
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
+
+			// 5. sql문 실행 후 결과 처리
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				String worker_id = rs.getString("worker_id");
+				String worker_pw = rs.getString("worker_pw");
+				String worker_dept = rs.getString("worker_dept");
+				String worker_name = rs.getString("worker_name");
+				String worker_phone = rs.getString("worker_phone");
+				String worker_joindate = rs.getString("WORKER_JOINDATE");
+				String admin_yesno = rs.getString("admin_yesno");
+
+				vo = new MemberVO(worker_id, worker_pw, worker_dept, worker_name, worker_phone, worker_joindate);
+			}
+			
+
+		} catch (Exception e) {
+
+			System.out.println("로그인실패");
+			e.printStackTrace();
+
+		} finally {
+
+			DBclose();
+
+		}
+
+		return vo;
+
+	}
+	
+	
+	
 
 	
 	public int Update(String setid,String password,String name,String tel,String dept) {
@@ -239,18 +288,18 @@ public class MemberDAO {
 		
 	}
 	
-	public ArrayList<MemberVO> select(String id) {
+	public ArrayList<MemberVO> select(String WORKER_DEPT) {
 		
 		al1 = new ArrayList<MemberVO>(); 
 		
 		try {
 			DBcon();
 
-			String sql = "select w.worker_id,w.worker_name, h.hm_lock, w.education, w.worker_joindate from tbl_helmet h,tbl_worker w where h.worker_id=w.worker_id and w.worker_id=?";
+			String sql = "select w.worker_id,w.worker_name, h.hm_lock, w.education, w.worker_joindate from tbl_helmet h,tbl_worker w where h.worker_id=w.worker_id and w.WORKER_DEPT=?";
 
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, id);
+			pstmt.setString(1, WORKER_DEPT);
 			
 			rs = pstmt.executeQuery();
 
@@ -261,12 +310,10 @@ public class MemberDAO {
 				String worker_name = rs.getString("worker_name");
 				String hm_lock = rs.getString("hm_lock");
 				String education = rs.getString("education");
-				Date worker_joindate = rs.getDate("worker_joindate");
-				String worker_id = rs.getString("worker_id");
-			
+				String worker_joindate = rs.getString("worker_joindate");
+				String worker_id = rs.getString("worker_id");			
 				
-				vo2 = new MemberVO(worker_name, worker_joindate, hm_lock, education, worker_id);
-							
+				vo2 = new MemberVO(worker_name, worker_joindate, hm_lock, education, worker_id);							
 				
 				al1.add(vo2);
 				
@@ -305,7 +352,7 @@ public class MemberDAO {
 				String worker_name = rs.getString("worker_name");
 				String hm_lock = rs.getString("hm_lock");
 				String education = rs.getString("education");
-				Date worker_joindate = rs.getDate("worker_joindate");
+				String worker_joindate = rs.getString("worker_joindate");
 				String worker_id = rs.getString("worker_id");
 			
 				

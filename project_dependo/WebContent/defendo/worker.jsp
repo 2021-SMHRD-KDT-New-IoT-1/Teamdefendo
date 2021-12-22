@@ -95,7 +95,6 @@ table.type11 th {
 			<%
 			//현재 로그인 상태인지 판별 (vo == null -> 로그인 하지 않은 상태)	
 			
-			SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
 			String id = (String)session.getAttribute("ID");
 			AttendanceDAO dao = new AttendanceDAO();
 			AttendanceVO vo = dao.attendance(id);

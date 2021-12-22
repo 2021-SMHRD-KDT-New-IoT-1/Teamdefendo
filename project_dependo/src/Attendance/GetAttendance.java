@@ -15,32 +15,28 @@ import javax.servlet.http.HttpServletResponse;
 public class GetAttendance extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		Calendar cal = Calendar.getInstance();
-		SimpleDateFormat sdf1 = new SimpleDateFormat("MM:dd-hh:mm:ss");
-		System.out.println(sdf1.format(cal));
-	
-		String hm_id = request.getParameter("hm_id");
 		int GetAttendance = Integer.parseInt(request.getParameter("GetAttendance"));
-		int count1 =0;
-		int count2 =0;
+		String worker_id = request.getParameter("worker_id");
+		AttendanceDAO dao = new AttendanceDAO();
 		
-		if(GetAttendance==1 && count1==0) {
-			// db 인썰트??
-			// insert hm_id / sysdata
-			count1++;
+		
+		if(GetAttendance==1) {
 			
-		}else if(GetAttendance==0 && count2==0) {
-			// db 업뎃??
-			// update hm_id / sysdata
-			count2++;
+			
+			int cnt1 = dao.StartTime(worker_id);
+			int cnt2 = dao.EndTime(worker_id);
+			if(cnt1>0) {
+				System.out.println("출근 입력 완료");
+			}
+			if(cnt2==1) {
+				System.out.println("퇴근 완료");
+			}
 			
 		}
-		
-		
-		
 		
 	}
 

@@ -10,30 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 
-@WebServlet("/Select")
-public class Select extends HttpServlet {
+
+@WebServlet("/AndroidSelectAll")
+public class AndroidSelectAll extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
-	
-	
-	
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		String WORKER_DEPT = request.getParameter("dept");
 		
-		request.setCharacterEncoding("euc-kr");
-		
-		String id = request.getParameter("workerName");
 		
 		MemberDAO dao = new MemberDAO();
-		ArrayList<MemberVO> al =dao.select(id);
+		ArrayList<MemberVO> al = dao.select(WORKER_DEPT);
+				
+		String result = new Gson().toJson(al);
+		PrintWriter out = response.getWriter();		
+		out.print(result);
 		
-		
-		PrintWriter out = response.getWriter();
-		out.print(al);
 		
 	}
 
