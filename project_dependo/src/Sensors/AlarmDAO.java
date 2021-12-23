@@ -55,12 +55,7 @@ public class AlarmDAO {
 	
 	
 	public ArrayList<AlarmVO> Alarm() {
-
-
-		
-	    
-		try {
-			
+		try {			
 			conn();
 
 			String sql = "select * from tbl_helmet";
@@ -71,21 +66,17 @@ public class AlarmDAO {
 			
 			
 			if (rs.next()) {
-			
 				int hM_IMPACT_SENSOR = rs.getInt("HM_IMPACT_SENSOR");
 				int hM_GAS_SENSOR = rs.getInt("HM_GAS_SENSOR");
 				String WORKER_ID = rs.getString("WORKER_ID");
 				
 				vo= new AlarmVO(hM_IMPACT_SENSOR, hM_GAS_SENSOR, WORKER_ID);
-				
-				
 			}
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		} finally {
 			close();
-		
 		}
 
 		return al;

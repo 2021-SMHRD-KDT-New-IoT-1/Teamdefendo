@@ -8,9 +8,9 @@ public class AlarmVO {
 	
 	public AlarmVO(int hM_IMPACT_SENSOR, int hM_GAS_SENSOR, String WORKER_ID) {
 		
-		HM_IMPACT_SENSOR = hM_IMPACT_SENSOR;
-		HM_GAS_SENSOR = hM_GAS_SENSOR;
-		WORKER_ID = WORKER_ID;
+		this.HM_IMPACT_SENSOR = hM_IMPACT_SENSOR;
+		this.HM_GAS_SENSOR = hM_GAS_SENSOR;
+		this.WORKER_ID = WORKER_ID;
 	}
 
 	public int getHM_IMPACT_SENSOR() {
@@ -24,8 +24,4 @@ public class AlarmVO {
 	public String getWORKER_ID() {
 		return WORKER_ID;
 	}
-	
-	
-	
-	
 }
