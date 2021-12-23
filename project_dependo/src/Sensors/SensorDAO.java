@@ -157,17 +157,7 @@ public ArrayList<SensorVO> Gps() {
 	
 
 
-	public ArrayList<E> name() {
-		
-	}
-	
-
-	
-	
-	
-	
-	
-	
-	
-
+//	public ArrayList<E> name() {
+//		
+//	}
 }
