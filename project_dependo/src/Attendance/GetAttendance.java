@@ -19,12 +19,17 @@ public class GetAttendance extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		int GetAttendance = Integer.parseInt(request.getParameter("GetAttendance"));
-		String worker_id = request.getParameter("worker_id");
+		String GetAttendance = request.getParameter("GetAttendance"); 
+		String hm_id = request.getParameter("hm_id");	
+		
+		
+		System.out.println(hm_id+"/"+GetAttendance);
+		
 		AttendanceDAO dao = new AttendanceDAO();
 		
+		String worker_id = dao.name(hm_id);
 		
-		if(GetAttendance==1) {
+		if(GetAttendance.equals("Y")) {
 			
 			
 			int cnt1 = dao.StartTime(worker_id);
