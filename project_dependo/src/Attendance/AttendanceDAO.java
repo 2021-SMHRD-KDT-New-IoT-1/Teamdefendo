@@ -171,6 +171,41 @@ public class AttendanceDAO {
 	}
 	
 
+	public String name(String hm_id) {
+		
+		String name=null;
+		
+		try {
+			
+			DBcon();
+
+			String sql ="select * from tbl_helmet where hm_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, hm_id);
+			rs = pstmt.executeQuery();
+			
+			
+			
+			if (rs.next()) {
+			
+				name= rs.getString("worker_id"); 
+			
+			}
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		} finally {
+			DBclose();
+		}
+
+		return name;
+
+}
+
+	
+	
+	
+	
 	public int StartTime(String id) {
 		
 		

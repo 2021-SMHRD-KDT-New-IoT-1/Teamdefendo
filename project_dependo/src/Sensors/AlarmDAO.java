@@ -80,9 +80,6 @@ public class AlarmDAO {
 		}
 
 		return al;
-
-	
-	
 	}
 	
 

@@ -16,23 +16,20 @@ import com.google.gson.Gson;
 public class InputArduino extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		int attack = Integer.parseInt(request.getParameter("attack"));
 		int alram = Integer.parseInt(request.getParameter("alram"));
 		float Lat = Float.valueOf(request.getParameter("r_LatF"));
 		float Long = Float.valueOf(request.getParameter("r_LongF"));
 		String lock = request.getParameter("lock");
 		String hm_id = request.getParameter("hm_id");
-		
-		System.out.println(attack+"/"+alram+"/"+Lat+"/"+Long+""+lock+"/"+hm_id+"///////");
-		
-	      RequestDispatcher rd = request.getRequestDispatcher("/GetAttendance");
-	        request.setAttribute("hm_id", hm_id);
-	        request.setAttribute("lock", lock);
-	        rd.forward(request, response);   
-		
-		
-		
+
+		RequestDispatcher rd = request.getRequestDispatcher("/GetAttendance");
+		request.setAttribute("hm_id", hm_id);
+		request.setAttribute("lock", lock);
+		rd.forward(request, response);
+
 		ArduinoDAO dao = new ArduinoDAO();
 		ArduinoVO vo = dao.update(attack, Lat, Long, alram, lock, hm_id);
 		String result = new Gson().toJson(vo);
