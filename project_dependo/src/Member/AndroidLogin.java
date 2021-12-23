@@ -30,18 +30,11 @@ public class AndroidLogin extends HttpServlet {
         
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo;
-		vo=dao.Login(id,pw);
-		
-		String result = new Gson().toJson(vo);
-		PrintWriter out = response.getWriter();
+		vo=dao.AndroidLogin(id, pw);		
+			String result = new Gson().toJson(vo);
+			PrintWriter out = response.getWriter();		
+			out.print(result);
 	
-		out.print(result);
-
-
-		
-		
-		
-		
 		
 	}
 

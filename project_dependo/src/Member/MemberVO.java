@@ -9,7 +9,7 @@ public class MemberVO {
 	String worker_dept;
 	String worker_name;
 	String worker_phone;
-	Date worker_joindate;
+	String worker_joindate;
 	String admin_yesno;
 	
 	String hm_lock;
@@ -18,6 +18,22 @@ public class MemberVO {
 	
 	
 	
+	
+	
+	public MemberVO(String worker_id, String worker_pw, String worker_dept, String worker_name, String worker_phone, String worker_joindate) {
+		
+		this.worker_id = worker_id;
+		this.worker_pw = worker_pw;
+		this.worker_dept = worker_dept;
+		this.worker_name = worker_name;
+		this.worker_phone = worker_phone;
+		this.worker_joindate = worker_joindate;
+	}
+
+
+
+
+
 	public String getHm_lock() {
 		return hm_lock;
 	}
@@ -35,7 +51,7 @@ public class MemberVO {
 
 
 	public MemberVO(String worker_id, String worker_pw, String worker_dept, String worker_name, String worker_phone,
-			Date worker_joindate, String admin_yesno) {
+			String worker_joindate, String admin_yesno) {
 		
 		this.worker_id = worker_id;
 		this.worker_pw = worker_pw;
@@ -50,7 +66,7 @@ public class MemberVO {
 	
 	
 
-	public MemberVO(String worker_name, Date worker_joindate, String hm_lock, String education,String worker_id) {
+	public MemberVO(String worker_name, String worker_joindate, String hm_lock, String education,String worker_id) {
 		
 		this.worker_id = worker_id;
 		this.worker_name = worker_name;
@@ -83,7 +99,7 @@ public class MemberVO {
 		return worker_phone;
 	}
 
-	public Date getWorker_joindate() {
+	public String getWorker_joindate() {
 		return worker_joindate;
 	}
 
