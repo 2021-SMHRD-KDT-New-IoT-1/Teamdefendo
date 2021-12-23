@@ -211,8 +211,10 @@ public class AttendanceDAO {
 		
 		try {
 			DBcon();
-
-			String sql = "select * FROM tbl_attendance where worker_id=? and start_time = TO_CHAR(SYSDATE, 'YY-MM-DD')";
+					
+			System.out.println("출석 성공11111");
+			
+			String sql = "select * FROM tbl_attendance where worker_id=? and TO_CHAR(start_time,'YY-MM-DD') = TO_CHAR(SYSDATE, 'YY-MM-DD')";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -220,14 +222,14 @@ public class AttendanceDAO {
 			
 			rs = pstmt.executeQuery();
 
-			if (rs.next()) {
+			if (!rs.next()) {
 			
-				
+				System.out.println("출석 성공22222");
 				try {
 					
 					DBcon();
 
-					String sql2 = "INSERT INTO tbl_attendance (worker_id, start_time, att_type) VALUES (?, sysdate, 'N')";
+					String sql2 = "INSERT INTO tbl_attendance (ATT_SEQ,worker_id, start_time, att_type) VALUES (TBL_ATTENDANCE_SEQ.nextval,?, sysdate, 'N')";
 					pstmt = con.prepareStatement(sql2);
 					pstmt.setString(1, id);
 					cnt = pstmt.executeUpdate();
