@@ -18,8 +18,6 @@ public class MemberDAO {
 	MemberVO vo = null;
 	MemberVO vo2 = null;
 	ArrayList<MemberVO> al1 = null;
-
-
 	
 	
 	public void DBcon() {

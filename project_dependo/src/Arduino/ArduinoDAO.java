@@ -47,21 +47,24 @@ public class ArduinoDAO {
 		}
 	}
 
-	public ArduinoVO getSensor() {
+	public ArduinoVO getSensor(String hm_id) {
 		ArduinoVO vo = null;
 		try {
+			System.out.println(hm_id);
+			System.out.println("select立加 己傍");
 			conn();
-			String sql = "select * from defendo";
+			String sql = "select hm_impact_sensor, latitude, longitude, hm_lock, hm_gas_sensor from tbl_helmet WHERE hm_id = ?";
 
 			psmt = conn.prepareStatement(sql);
 
+			psmt.setString(1, hm_id);
 			rs = psmt.executeQuery();
 
-			if (rs.next()) {
+			if (rs.next()) {				
 				int attack = rs.getInt(1);
 				float Lat = rs.getFloat(2);
 				float Long = rs.getFloat(3);
-				int lock = rs.getInt(4);
+				String lock = rs.getString(4);
 				int alram = rs.getInt(5);
 
 				System.out.println(attack);
@@ -69,8 +72,10 @@ public class ArduinoDAO {
 				System.out.println(lock);
 				System.out.println(Lat);
 				System.out.println(Long);
-
-				vo = new ArduinoVO(attack, alram, lock, Lat, Long);
+				vo = new ArduinoVO(attack, alram, lock, Lat, Long, hm_id);
+			}
+			else {
+				System.out.println("角菩俺曹捞赤");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -80,25 +85,26 @@ public class ArduinoDAO {
 		return vo;
 	}
 
-	public ArduinoVO update(int attack, float Lat, float Long, int alram, int lock) {
+	public ArduinoVO update(int attack, float Lat, float Long, int alram, String lock, String hm_id) {
 		ArduinoVO vo = null;
-		System.out.println("立加 己傍");
+		System.out.println("update立加 己傍");
 		try {
 			conn();
-			String sql = "update defendo set hm_impact_sensor = ?, latitude = ?, longitude = ?, hm_lock = ?, hm_gas_sensor = ?";
+			String sql = "update tbl_helmet set hm_impact_sensor = ?, latitude = ?, longitude = ?, hm_lock = ?, hm_gas_sensor = ? WHERE hm_id = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, attack);
 			psmt.setFloat(2, Lat);
 			psmt.setFloat(3, Long);
-			psmt.setInt(4, lock);
+			psmt.setString(4, lock);
 			psmt.setInt(5, alram);
+			psmt.setString(6, hm_id);
 			psmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		vo = getSensor();
+		vo = getSensor(hm_id);
 		return vo;
 	}
 }

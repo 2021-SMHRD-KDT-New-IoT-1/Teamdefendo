@@ -20,13 +20,13 @@ public class InputArduino extends HttpServlet {
 		int alram = Integer.parseInt(request.getParameter("alram"));
 		float Lat = Float.valueOf(request.getParameter("r_LatF"));
 		float Long = Float.valueOf(request.getParameter("r_LongF"));
-		int lock = Integer.parseInt(request.getParameter("lock"));
+		String lock = request.getParameter("lock");
+		String hm_id = request.getParameter("hm_id");
 		
 		ArduinoDAO dao = new ArduinoDAO();
-		ArduinoVO vo = dao.update(attack, Lat, Long, alram, lock);
+		ArduinoVO vo = dao.update(attack, Lat, Long, alram, lock, hm_id);
 		String result = new Gson().toJson(vo);
 		PrintWriter out = response.getWriter();
 		out.print(result);
 	}
-
 }

@@ -18,7 +18,7 @@
 
 <% 	
   	ArduinoDAO dao = new ArduinoDAO();
-  	ArduinoVO vo2 = dao.getSensor();
+  	ArduinoVO vo = dao.getSensor("hm_id1");
 %>
 	<div class="container">
 		<h2>Pump모터 제어 서버</h2>
@@ -29,42 +29,50 @@
 						<tr>
 							<td>
 							<p>어택: </p>
-									<p ><%=vo2.getAttack() %></p>	
+									<p ><%=vo.getAttack() %></p>	
 							</td>
 							</tr>
 							
 							<tr>
 							<td>
 							<p>가스: </p>
-									<p ><%=vo2.getAlram() %></p>
+									<p ><%=vo.getAlram() %></p>
 							</td>
 							</tr>
 							
 							<tr>
 							<td>
 							<p>잠금: </p>
-									<p ><%=vo2.getLock() %></p>
+									<p ><%=vo.getLock() %></p>
 							</td>
 							</tr>
 							
 							<tr>
 							<td>
 							<p>위도: </p>
-									<p ><%=vo2.getLat() %></p>
+									<p ><%=vo.getLat() %></p>
 							</td>
 							</tr>
 							
 							<tr>
 							<td>
 							<p>경도: </p>
-									<p><%=vo2.getLong() %></p>
+									<p><%=vo.getLong() %></p>
 							</td>
-						</tr>
+							</tr>
+							
+							<tr>
+							<td>
+							<p>헬멧 ID: </p>
+									<p><%=vo.getHm_id() %></p>
+							</td>
+							</tr>
 					</table>
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
+	/*
 	$(function(){ 
 		$.ajax({
 			url : "GetArduino",
@@ -82,6 +90,7 @@
 			}
 		});
 	});
+	*/
 	</script>
 </body>
 </html>
