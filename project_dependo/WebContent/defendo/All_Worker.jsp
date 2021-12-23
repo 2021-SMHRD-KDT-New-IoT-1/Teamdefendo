@@ -585,7 +585,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			
 			
 			$(gN).each(function(){
-				if(wN == this.innerText){
+				if(this.innerText.indexOf(wN) == 1){
 					//클래스 추가  bar1(보이게)  bar2(안보이게)
 					//bar1 추가 bar2 제거
 					// this.parentNode.parentNode.parentNode.parentNode.className += ' bar1';
