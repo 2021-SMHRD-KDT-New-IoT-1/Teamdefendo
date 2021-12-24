@@ -212,7 +212,6 @@ public class AttendanceDAO {
 		try {
 			DBcon();
 					
-			System.out.println("출석 성공11111");
 			
 			String sql = "select * FROM tbl_attendance where worker_id=? and TO_CHAR(start_time,'YY-MM-DD') = TO_CHAR(SYSDATE, 'YY-MM-DD')";
 
@@ -224,7 +223,6 @@ public class AttendanceDAO {
 
 			if (!rs.next()) {
 			
-				System.out.println("출석 성공22222");
 				try {
 					
 					DBcon();
@@ -271,7 +269,7 @@ public class AttendanceDAO {
 		DBcon();
 
 		
-		String sql = "UPDATE tbl_attendance SET end_time = sysdate, att_type = 'y' WHERE worker_id = ? and start_time = TO_CHAR(SYSDATE, 'YY-MM-DD')";
+		String sql = "UPDATE tbl_attendance SET end_time = sysdate, att_type = 'Y' WHERE worker_id = ? and  TO_CHAR(start_time,'YY-MM-DD') = TO_CHAR(SYSDATE, 'YY-MM-DD')";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, id);
 		cnt = pstmt.executeUpdate();

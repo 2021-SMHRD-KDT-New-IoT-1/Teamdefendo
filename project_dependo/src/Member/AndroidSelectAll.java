@@ -23,6 +23,7 @@ public class AndroidSelectAll extends HttpServlet {
 		
 		String WORKER_DEPT = request.getParameter("dept");
 		
+		System.out.println(WORKER_DEPT);
 		
 		MemberDAO dao = new MemberDAO();
 		ArrayList<MemberVO> al = dao.select(WORKER_DEPT);
