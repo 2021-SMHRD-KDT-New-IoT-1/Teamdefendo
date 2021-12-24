@@ -69,7 +69,6 @@ public class MemberDAO {
 		
 			DBcon();
 
-			// 4. SQL문 준비
 			String sql = "insert into tbl_worker(worker_id, worker_pw, worker_name, worker_phone,worker_dept, ADMIN_YESNO) values(?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -101,22 +100,18 @@ public class MemberDAO {
 
 			pstmt = con.prepareStatement(sql);
 
-			// 4. 바인드 변수 채워두기
 			pstmt.setString(1, id);
 
-			// 5. sql문 실행 후 결과 처리
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				// 입력한 이메일을 사용할 수 없을때
 
 				check = true;
 
 			} else {
-				// 입력한 이메일을 사용할 수 있을때
 
 				check = false;
-				// 초기값은 false라 안적어도 되는데 직관적으로 보기 편하게
+				
 			}
 
 		} catch (Exception e) {
@@ -144,11 +139,9 @@ public class MemberDAO {
 
 			pstmt = con.prepareStatement(sql);
 
-			// 4. 바인드 변수 채워두기
 			pstmt.setString(1, id);
 			pstmt.setString(2, pw);
 
-			// 5. sql문 실행 후 결과 처리
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -191,11 +184,9 @@ public class MemberDAO {
 
 			pstmt = con.prepareStatement(sql);
 
-			// 4. 바인드 변수 채워두기
 			pstmt.setString(1, id);
 			pstmt.setString(2, pw);
 
-			// 5. sql문 실행 후 결과 처리
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -238,7 +229,6 @@ public class MemberDAO {
 			DBcon();
 			
 			
-			// 4. SQL문 준비
 			String sql = "UPDATE tbl_worker SET worker_pw=?, worker_name=?, worker_phone=?,worker_dept=? WHERE worker_id =?";
 			pstmt = con.prepareStatement(sql);
 			
@@ -377,7 +367,6 @@ public class MemberDAO {
 			DBcon();
 			
 			
-			// 4. SQL문 준비
 			String sql = "UPDATE tbl_helmet SET hm_id=? WHERE worker_id =?";
 			pstmt = con.prepareStatement(sql);
 			
@@ -412,7 +401,6 @@ public class MemberDAO {
 			DBcon();
 			
 			
-			// 4. SQL문 준비
 			String sql = "UPDATE tbl_worker SET WORKER_NAME=?, WORKER_ID=?, ADMIN_YESNO=?, WORKER_DEPT=? WHERE worker_id =?";
 			pstmt = con.prepareStatement(sql);
 			
