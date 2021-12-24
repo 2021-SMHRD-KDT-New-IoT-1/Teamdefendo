@@ -236,7 +236,7 @@
 	<% for(SensorVO vo : danger){%>
 	var customOverlay = new kakao.maps.CustomOverlay({
 		map: map,
-		content: '<div style="padding:0 5px;background:red;"><%=vo.getHm_id()%></div>', 
+		content: '<div style="padding:0 5px;background:red;"><%=vo.getWorkerName()%></div>', 
 		position: new kakao.maps.LatLng(<%=vo.getLatitude()%>,<%=vo.getLongitude()%>), // 커스텀 오버레이를 표시할 좌표
 		xAnchor: 0.5, // 컨텐츠의 x 위치
 		yAnchor: 0 // 컨텐츠의 y 위치
