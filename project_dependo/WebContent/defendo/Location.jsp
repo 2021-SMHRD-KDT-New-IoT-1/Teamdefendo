@@ -1,3 +1,4 @@
+<%@page import="Member.MemberVO"%>
 <%@page import="Sensors.SensorVO"%>
 <%@page import="Sensors.SensorDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -165,48 +166,85 @@
 			   }
 		   }
 		%>
+		
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+	    mapOption = { 
+	        center: new kakao.maps.LatLng(35.149967, 126.919945), // 지도의 중심좌표
+	        level: 2 // 지도의 확대 레벨
+	    };
+
+	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	 
+	// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
+	var positions = [
+		<%for(int i = 0;i<gpsal.size();i++){
+			SensorVO vo = gpsal.get(i);
+		%>
+	    {
+	        content: '<div><%=vo.getWorkerPhone()%></div>', 
+	        latlng: new kakao.maps.LatLng(<%=vo.getLatitude()%>,<%=vo.getLongitude()%>)
+	    }<%if(i<gpsal.size()-1){%>,<%}}%>
+	    
+	];
+
+	for (var i = 0; i < positions.length; i ++) {
+	    // 마커를 생성합니다
+	    var marker = new kakao.maps.Marker({
+	        map: map, // 마커를 표시할 지도
+	        position: positions[i].latlng // 마커의 위치
+	    });
+
+	    // 마커에 표시할 인포윈도우를 생성합니다 
+	    var infowindow = new kakao.maps.InfoWindow({
+	        content: positions[i].content // 인포윈도우에 표시할 내용
+	    });
+
+	    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+	    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+	    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+	    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+	    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+	}
+
+	// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+	function makeOverListener(map, marker, infowindow) {
+	    return function() {
+	        infowindow.open(map, marker);
+	    };
+	}
+
+	// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+	function makeOutListener(infowindow) {
+	    return function() {
+	        infowindow.close();
+	    };
+	}
+	<% for(SensorVO vo : safe){ %>
 	
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		    mapOption = {
-		        center: new kakao.maps.LatLng(35.149967, 126.919945), // 지도의 중심좌표
-		        level: 2, // 지도의 확대 레벨
-		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-		    }; 
+	
+	var customOverlay = new kakao.maps.CustomOverlay({
+		map: map,
+		content: '<div style="padding:0 5px;background:#fff;"><%=vo.getWorkerName()%></div>', 
+		position: new kakao.maps.LatLng(<%=vo.getLatitude()%>,<%=vo.getLongitude()%>), // 커스텀 오버레이를 표시할 좌표
+		xAnchor: 0.5, // 컨텐츠의 x 위치
+		yAnchor: 0 // 컨텐츠의 y 위치
+	});
+	
 
-		// 지도를 생성한다 
-		var map = new kakao.maps.Map(mapContainer, mapOption); 
-
+	<%}%>
+	
+	<% for(SensorVO vo : danger){%>
+	var customOverlay = new kakao.maps.CustomOverlay({
+		map: map,
+		content: '<div style="padding:0 5px;background:red;"><%=vo.getHm_id()%></div>', 
+		position: new kakao.maps.LatLng(<%=vo.getLatitude()%>,<%=vo.getLongitude()%>), // 커스텀 오버레이를 표시할 좌표
+		xAnchor: 0.5, // 컨텐츠의 x 위치
+		yAnchor: 0 // 컨텐츠의 y 위치
+	});
+	<%}%>
+	//////////////
+	
 		
-	<% for(SensorVO vo : gpsal){ %>
-			// 지도에 마커를 생성하고 표시한다
-			var marker = new kakao.maps.Marker({
-			    position: new kakao.maps.LatLng(<%=vo.getLatitude()%>,<%=vo.getLongitude()%> ), // 마커의 좌표
-			    map: map // 마커를 표시할 지도 객체
-			});
-			<%}	%>
-		<% for(SensorVO vo : safe){ %>
-		
-		
-		var customOverlay = new kakao.maps.CustomOverlay({
-			map: map,
-			content: '<div style="padding:0 5px;background:#fff;"><%=vo.getHm_id()%></div>', 
-			position: new kakao.maps.LatLng(<%=vo.getLatitude()%>,<%=vo.getLongitude()%>), // 커스텀 오버레이를 표시할 좌표
-			xAnchor: 0.5, // 컨텐츠의 x 위치
-			yAnchor: 0 // 컨텐츠의 y 위치
-		});
-		
-
-		<%}%>
-		
-		<% for(SensorVO vo : danger){%>
-		var customOverlay = new kakao.maps.CustomOverlay({
-			map: map,
-			content: '<div style="padding:0 5px;background:red;"><%=vo.getHm_id()%></div>', 
-			position: new kakao.maps.LatLng(<%=vo.getLatitude()%>,<%=vo.getLongitude()%>), // 커스텀 오버레이를 표시할 좌표
-			xAnchor: 0.5, // 컨텐츠의 x 위치
-			yAnchor: 0 // 컨텐츠의 y 위치
-		});
-		<%}%>
 
 
 	</script>

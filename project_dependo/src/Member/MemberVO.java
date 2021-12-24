@@ -62,7 +62,11 @@ public class MemberVO {
 		this.admin_yesno = admin_yesno;
 	}
 	
-	
+	public MemberVO(String worker_id, String worker_dept, String worker_name, String worker_phone) {
+		this.worker_dept = worker_dept;
+		this.worker_name = worker_name;
+		this.worker_phone = worker_phone;
+	}
 	
 	
 
