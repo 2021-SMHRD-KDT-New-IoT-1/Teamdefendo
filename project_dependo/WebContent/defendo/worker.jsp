@@ -114,13 +114,9 @@ table.type11 th {
 				}else{
 					earlyTime="Á¤»óÅð±Ù";
 				};
-				
-				
+
 			}
-			
-		
-			
-		
+
 			Date late = fm.parse(time1);
 			
 			System.out.print(late.getHours());
