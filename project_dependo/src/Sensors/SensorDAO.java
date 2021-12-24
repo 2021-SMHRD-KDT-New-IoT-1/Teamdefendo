@@ -117,7 +117,7 @@ public ArrayList<SensorVO> Gps() {
 		
 		
 		// 4. SQLπÆ ¡ÿ∫Ò
-		String sql = "select hm_id,latitude,longitude from tbl_helmet";
+		String sql = "select * from tbl_helmet";
 		
 		psmt = conn.prepareStatement(sql);
 
@@ -129,12 +129,15 @@ public ArrayList<SensorVO> Gps() {
 			String hm_id = rs.getString("hm_id");
 			float latitude = rs.getFloat("latitude");
 			float longitude = rs.getFloat("longitude");
+			int hm_impact_sensor = rs.getInt("hm_impact_sensor");
+			int hm_gas_sensor = rs.getInt("hm_gas_sensor");
+			
 			
 			System.out.println(hm_id);
 			System.out.println(latitude);
 			System.out.println(longitude);
 			
-			gpsvo = new SensorVO(latitude, longitude, hm_id);
+			gpsvo = new SensorVO(latitude, longitude, hm_id, hm_gas_sensor, hm_impact_sensor);
            
 			gpsal.add(gpsvo);
 

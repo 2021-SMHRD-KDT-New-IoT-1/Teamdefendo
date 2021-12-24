@@ -154,6 +154,16 @@
 	
 		<% SensorDAO Sdao = new SensorDAO();
 		   ArrayList<SensorVO> gpsal = Sdao.Gps();
+		   ArrayList<SensorVO> danger = new ArrayList<>();
+		   ArrayList<SensorVO> safe = new ArrayList<>();
+		   //  센서 값에 따라 그룹 나눔
+		   for(SensorVO vo : gpsal){
+			   if(vo.getimpact()>0 || vo.getgas()>0){
+				   danger.add(vo);
+			   }else{
+				   safe.add(vo);
+			   }
+		   }
 		%>
 	
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -167,41 +177,36 @@
 		var map = new kakao.maps.Map(mapContainer, mapOption); 
 
 		
-	<% for(int i=0; i<gpsal.size(); i++){ %>
-			
-			
+	<% for(SensorVO vo : gpsal){ %>
 			// 지도에 마커를 생성하고 표시한다
 			var marker = new kakao.maps.Marker({
-			    position: new kakao.maps.LatLng(<%=gpsal.get(i).getLatitude()%>,<%=gpsal.get(i).getLongitude()%> ), // 마커의 좌표
+			    position: new kakao.maps.LatLng(<%=vo.getLatitude()%>,<%=vo.getLongitude()%> ), // 마커의 좌표
 			    map: map // 마커를 표시할 지도 객체
 			});
-			
-			
-			<%
-		}		
-		
-		%>
-		
-		
-		<% for(int i=0; i<gpsal.size(); i++){ %>
+			<%}	%>
+		<% for(SensorVO vo : safe){ %>
 		
 		
 		var customOverlay = new kakao.maps.CustomOverlay({
 			map: map,
-			content: '<div style="padding:0 5px;background:#fff;"><%=gpsal.get(i).getHm_id()%></div>', 
-			position: new kakao.maps.LatLng(<%=gpsal.get(i).getLatitude()%>,<%=gpsal.get(i).getLongitude()%>), // 커스텀 오버레이를 표시할 좌표
+			content: '<div style="padding:0 5px;background:#fff;"><%=vo.getHm_id()%></div>', 
+			position: new kakao.maps.LatLng(<%=vo.getLatitude()%>,<%=vo.getLongitude()%>), // 커스텀 오버레이를 표시할 좌표
 			xAnchor: 0.5, // 컨텐츠의 x 위치
 			yAnchor: 0 // 컨텐츠의 y 위치
 		});
 		
 
-		<%
-	}
-	
-	
-	%>
+		<%}%>
 		
-		
+		<% for(SensorVO vo : danger){%>
+		var customOverlay = new kakao.maps.CustomOverlay({
+			map: map,
+			content: '<div style="padding:0 5px;background:red;"><%=vo.getHm_id()%></div>', 
+			position: new kakao.maps.LatLng(<%=vo.getLatitude()%>,<%=vo.getLongitude()%>), // 커스텀 오버레이를 표시할 좌표
+			xAnchor: 0.5, // 컨텐츠의 x 위치
+			yAnchor: 0 // 컨텐츠의 y 위치
+		});
+		<%}%>
 
 
 	</script>
