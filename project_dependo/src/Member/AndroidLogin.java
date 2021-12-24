@@ -29,11 +29,11 @@ public class AndroidLogin extends HttpServlet {
 		System.out.println(pw);
         
 		MemberDAO dao = new MemberDAO();
-		MemberVO vo;
-		vo=dao.AndroidLogin(id, pw);		
-			String result = new Gson().toJson(vo);
-			PrintWriter out = response.getWriter();		
-			out.print(result);
+		MemberVO vo=dao.AndroidLogin(id, pw);	
+		System.out.println("¾ÆÀÌµð"+vo.getWorker_id());
+		String result = new Gson().toJson(vo);
+		PrintWriter out = response.getWriter();		
+		out.print(result);
 	
 		
 	}

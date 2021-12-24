@@ -73,7 +73,7 @@ public class AttendanceDAO {
 			
 			DBcon();
 
-			String sql = "SELECT * FROM (SELECT * FROM tbl_attendance ORDER BY ROWNUM DESC) WHERE worker_id=? and ROWNUM = 1";
+			String sql = "SELECT * FROM (SELECT * FROM tbl_attendance where worker_id=? ORDER BY ATT_SEQ DESC) WHERE ROWNUM = 1";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, worker_id);
 			rs = pstmt.executeQuery();

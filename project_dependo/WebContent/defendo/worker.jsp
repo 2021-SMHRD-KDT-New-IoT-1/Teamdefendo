@@ -100,9 +100,6 @@ table.type11 th {
 			AttendanceDAO dao = new AttendanceDAO();
 			AttendanceVO vo = dao.attendance(id);
 			
-			
-			
-
 			SimpleDateFormat fm = new SimpleDateFormat("YYYY-hh-dd HH:mm:ss");
 			String time1= vo.getStart_time();
 			String lateTime = null;
@@ -111,6 +108,7 @@ table.type11 th {
 			if(vo.getEnd_time()!=null){
 				String time2= vo.getEnd_time();
 				Date early  = fm.parse(time2);
+				
 				if(early.getHours()<18){
 					earlyTime="조퇴";
 				}else{
@@ -125,11 +123,9 @@ table.type11 th {
 		
 			Date late = fm.parse(time1);
 			
-			
-
 			System.out.print(late.getHours());
 			
-			if(late.getHours()>9){
+			if(late.getHours()>8){
 				lateTime="지각";
 			}else{
 				lateTime="정상출근";
