@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Member.MemberVO;
+
 public class SensorDAO {
 	
 	private Connection conn;
@@ -14,6 +16,8 @@ public class SensorDAO {
 	private ResultSet rs;
     SensorVO gpsvo = null;
     ArrayList<SensorVO> gpsal =null;
+    MemberVO vo = null;
+    ArrayList<SensorVO> al = new ArrayList<>();
 
 
 	private void conn() {
@@ -105,7 +109,7 @@ public class SensorDAO {
 	
 	
 	
-public ArrayList<SensorVO> Gps() {
+	public ArrayList<SensorVO> Gps() {
 		
 		gpsal = new ArrayList<SensorVO>();
 		
@@ -131,32 +135,57 @@ public ArrayList<SensorVO> Gps() {
 			float longitude = rs.getFloat("longitude");
 			int hm_impact_sensor = rs.getInt("hm_impact_sensor");
 			int hm_gas_sensor = rs.getInt("hm_gas_sensor");
+			String worker_id = rs.getString("worker_id");
 			
 			
 			System.out.println(hm_id);
 			System.out.println(latitude);
 			System.out.println(longitude);
 			
-			gpsvo = new SensorVO(latitude, longitude, hm_id, hm_gas_sensor, hm_impact_sensor);
+			gpsvo = new SensorVO(latitude, longitude, hm_id, hm_gas_sensor, hm_impact_sensor, worker_id);
            
 			gpsal.add(gpsvo);
 
 		}
+		for(SensorVO vo : gpsal ) {
+			String sql2 = "select worker_dept, worker_name, worker_phone from tbl_worker where worker_id = ?";
+			
+			psmt = conn.prepareStatement(sql2);
+			psmt.setString(1, vo.getworkerid());
+			rs = psmt.executeQuery();
+			
+			
+			if (rs.next()) {
+				String worker_dept = rs.getString("worker_dept");
+				String worker_name = rs.getString("worker_name");
+				String worker_phone = rs.getString("worker_phone");
+				
+				
+				gpsvo = new SensorVO(vo.getLatitude(),vo.getLongitude(), vo.getHm_id(), vo.getgas(), 
+						vo.getimpact(), vo.getworkerid(),worker_dept, worker_name, worker_phone);
+				al.add(gpsvo);
+		}
 		
 		
 		
-		} catch (Exception e) {
+		} 
+		}catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close();
 
 		}
 
-		return gpsal;
+		return al;
 		
 		
 		
 	}
+	
+	
+
+	
+
 	
 
 
