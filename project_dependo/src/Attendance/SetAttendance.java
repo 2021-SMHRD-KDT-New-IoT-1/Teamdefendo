@@ -26,9 +26,9 @@ public class SetAttendance extends HttpServlet {
 		
 		
 		if(vo!=null) {
-			System.out.println("로그인 성공!");
+			System.out.println("시간 로그인 성공!");
 		}else {
-			System.out.println("로그인 실패!!");
+			System.out.println("시간 로그인 실패!!");
 		}
 		
 		PrintWriter out = response.getWriter();

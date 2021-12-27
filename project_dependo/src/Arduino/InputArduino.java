@@ -24,10 +24,15 @@ public class InputArduino extends HttpServlet {
 		float Long = Float.valueOf(request.getParameter("r_LongF"));
 		String lock = request.getParameter("lock");
 		String hm_id = request.getParameter("hm_id");
-
+		
+		
+		
+		System.out.println(lock);
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/GetAttendance");
 		request.setAttribute("hm_id", hm_id);
-		request.setAttribute("lock", lock);
+		request.setAttribute("GetAttendance", lock);
 		rd.forward(request, response);
 
 		ArduinoDAO dao = new ArduinoDAO();
