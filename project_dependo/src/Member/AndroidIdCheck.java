@@ -20,7 +20,7 @@ public class AndroidIdCheck extends HttpServlet {
 		request.setCharacterEncoding("euc-kr");
 
 		String id = request.getParameter("id");
-
+		System.out.println("아디아디 : "+id);
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
@@ -29,7 +29,7 @@ public class AndroidIdCheck extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 
 		boolean check = dao.idCheck(id);
-
+		System.out.println("체크 체크 : "+check);
 		out.print(check);
 
 	}
