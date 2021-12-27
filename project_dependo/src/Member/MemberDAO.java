@@ -281,38 +281,6 @@ public class MemberDAO {
 		return cnt;
 	}
 	
-	public int Update(String setid, String password, String name, String tel, String dept,String newid) {
-
-		try {
-
-			DBcon();
-
-			String sql = "UPDATE tbl_worker SET worker_id=?,worker_pw=?, worker_name=?, worker_phone=?,worker_dept=? WHERE worker_id =?";
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setString(1, setid);
-			pstmt.setString(2, password);
-			pstmt.setString(3, name);
-			pstmt.setString(4, tel);
-			pstmt.setString(5, dept);
-			pstmt.setString(6, newid);
-
-			cnt = pstmt.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBclose();
-
-		}
-
-		return cnt;
-	}
-	
-	
-	
-	
-	
 
 	public int delete(String WORKER_ID) {
 

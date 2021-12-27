@@ -22,15 +22,17 @@ public class AndroidUpdate extends HttpServlet {
 
 		request.setCharacterEncoding("euc-kr");
 
-		String setid = request.getParameter("id"); // 원래 아이디
-		String newid = request.getParameter("newid"); // 수정할 아이디
+		
+		String setid = request.getParameter("id"); // 수정할 아이디
 		String password = request.getParameter("password"); // 비번
 		String name = request.getParameter("name"); // 노동자이름
 		String tel = request.getParameter("tel"); // 전화번호
 		String dept = request.getParameter("dept"); // 소속
-
+		
+		System.out.println("아이디 잘 들어 오나"+setid);
+		
 		MemberDAO dao = new MemberDAO();
-		int cnt = dao.Update(setid, password, name, tel, dept, newid);
+		int cnt = dao.Update(setid, password, name, tel, dept);
 
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");

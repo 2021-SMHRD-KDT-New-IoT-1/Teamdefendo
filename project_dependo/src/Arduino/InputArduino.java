@@ -27,7 +27,7 @@ public class InputArduino extends HttpServlet {
 		
 		
 		
-		System.out.println(lock);
+		System.out.println("잠근 버튼 : "+lock);
 		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/GetAttendance");

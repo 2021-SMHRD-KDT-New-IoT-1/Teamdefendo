@@ -63,6 +63,9 @@
             </div>
          </div>
 	
+		
+	
+	
 		 <% MemberDAO dao = new MemberDAO();
                          	
                           ArrayList<MemberVO> al1 = dao.selectAll();

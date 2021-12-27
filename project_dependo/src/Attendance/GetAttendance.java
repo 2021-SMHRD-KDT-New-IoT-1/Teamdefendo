@@ -34,6 +34,8 @@ public class GetAttendance extends HttpServlet {
 			int cnt1 = dao.StartTime(worker_id);
 			if(cnt1>0) {
 				System.out.println("출근 입력 완료");
+			}else {
+				System.out.println("출근 입력 실패");
 			}
 			
 			
@@ -41,6 +43,8 @@ public class GetAttendance extends HttpServlet {
 			int cnt2 = dao.EndTime(worker_id);
 			if(cnt2==1) {
 				System.out.println("퇴근 완료");
+			}else {
+				System.out.println("퇴근 입력 실패");
 			}
 			
 			

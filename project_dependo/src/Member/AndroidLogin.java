@@ -24,8 +24,8 @@ public class AndroidLogin extends HttpServlet {
 
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-
-
+		
+		
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = dao.AndroidLogin(id, pw);
 
