@@ -21,7 +21,6 @@ public class Delete extends HttpServlet {
 		request.setCharacterEncoding("euc-kr");
 		
 		String id = request.getParameter("id");
-		System.out.println(id);
 		
 		MemberDAO dao = new MemberDAO();
 		

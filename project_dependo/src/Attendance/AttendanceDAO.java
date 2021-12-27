@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import com.sun.jmx.snmp.Timestamp;
 
@@ -19,6 +20,7 @@ public class AttendanceDAO {
 	ResultSet rs;
 	AttendanceVO avo = null;
 	int cnt = 0;
+	ArrayList<AttendanceVO> al;
 
 	public void DBcon() {
 		try {
@@ -81,7 +83,9 @@ public class AttendanceDAO {
 
 				avo = new AttendanceVO(worker_id, start_time, end_time, att_type);
 
-			}
+		}
+			
+			
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -151,6 +155,50 @@ public class AttendanceDAO {
 		return avo;
 
 	}
+	
+	
+	
+	public ArrayList<AttendanceVO> AndroidLoginTime(String id, String date) {
+
+				
+	
+				try {
+
+					DBcon();
+
+					String sql = "SELECT * FROM tbl_attendance WHERE worker_id=? and TO_CHAR(start_time,'YYMMDD')= ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.setString(2, date);
+					
+					ResultSet rs = pstmt.executeQuery();
+
+					while (rs.next()) {
+
+						String start_time = rs.getString("start_time");
+						String end_time = rs.getString("end_time");
+						String att_type = rs.getString("att_type");
+
+						al.add(new AttendanceVO(id, start_time, end_time, att_type));
+
+					}
+					
+				} catch (Exception e) {
+
+					e.printStackTrace();
+				} finally {
+					DBclose();
+				}
+
+
+		return al;
+
+	}
+
+	
+	
+	
+	
 
 	public String name(String hm_id) {
 

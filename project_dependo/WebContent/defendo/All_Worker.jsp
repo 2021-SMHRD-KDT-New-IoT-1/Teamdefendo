@@ -342,7 +342,7 @@
                           
                           <button
                             class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                            aria-label="Delete" onclick="location.href='../Delete?id=<%=al1.get(i).getWorker_id()%>'">
+                            aria-label="Delete" onclick="if (confirm('삭제하시겠습니까?')){location.href='../Delete?id=<%=al1.get(i).getWorker_id()%>'}else{location.href=''}">
                             <svg
                               class="w-5 h-5"
                               aria-hidden="true"

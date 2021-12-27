@@ -23,7 +23,6 @@ public class GetAttendance extends HttpServlet {
 		String hm_id =(String)request.getAttribute("hm_id");	
 		
 		
-		System.out.println(hm_id+"/"+GetAttendance+"잘 넘어와~!!");
 		
 		AttendanceDAO dao = new AttendanceDAO();
 		
