@@ -8,11 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-@WebServlet("/AndroidLogin")
-public class AndroidLogin extends HttpServlet {
+@WebServlet("/AndroidUpdate")
+public class AndroidUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -20,20 +21,23 @@ public class AndroidLogin extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		request.setCharacterEncoding("euc-kr");
-		response.setContentType("text/html;charset=utf-8");
 
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
 		
-		System.out.println("아이디:"+id+" / 비밀번호 : "+pw);
+		String setid = request.getParameter("id"); // 수정할 아이디
+		String password = request.getParameter("password"); // 비번
+		String name = request.getParameter("name"); // 노동자이름
+		String tel = request.getParameter("tel"); // 전화번호
+		String dept = request.getParameter("dept"); // 소속
+		
+		System.out.println("아이디 잘 들어 오나"+setid);
 		
 		MemberDAO dao = new MemberDAO();
-		MemberVO vo = dao.AndroidLogin(id, pw);
+		int cnt = dao.Update(setid, password, name, tel, dept);
 
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
-		String result = new Gson().toJson(vo);
+		String result = new Gson().toJson(cnt);
 		PrintWriter out = response.getWriter();
 		out.print(result);
 

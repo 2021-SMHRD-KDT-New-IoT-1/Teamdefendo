@@ -87,14 +87,14 @@
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<ul class="menu_list menu_mm">
-					<li class="menu_item menu_mm"><a href="#">Home</a></li>
-					<li class="menu_item menu_mm"><a href="courses.html">Courses</a></li>
-					<li class="menu_item menu_mm"><a href="elements.html">Elements</a></li>
-					<li class="menu_item menu_mm"><a href="news.html">News</a></li>
-					<li class="menu_item menu_mm"><a href="contact.html">Contact</a></li>
+					<li class="menu_item menu_mm"><a href="Login.html">LOGIN</a></li>
+					<li class="menu_item menu_mm"><a href="JoinPage.html">JOIN US</a></li>
+					
 				</ul>
 
 				
+				<!-- Menu Social -->
+				<!-- Menu Social -->
 			</div>
 		</div>
 	</div>

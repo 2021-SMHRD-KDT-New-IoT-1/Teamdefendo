@@ -63,6 +63,9 @@
             </div>
          </div>
 	
+		
+	
+	
 		 <% MemberDAO dao = new MemberDAO();
                          	
                           ArrayList<MemberVO> al1 = dao.selectAll();
@@ -321,7 +324,7 @@
                 	 
                 	 
                 	 
-             <%    }else{%>
+             <%    }else{%>	
             	 
                       
                         <!-- 안전교육 - 미이수 -->
