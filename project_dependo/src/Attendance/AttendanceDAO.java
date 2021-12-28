@@ -117,6 +117,9 @@ public class AttendanceDAO {
 				System.out.println(start_time);
 				System.out.println(end_time);
 				System.out.println(att_type);
+				if(end_time == null) {
+					end_time = "";
+				}
 
 				avo = new AttendanceVO(id, start_time, end_time, att_type);
 				al.add(avo);

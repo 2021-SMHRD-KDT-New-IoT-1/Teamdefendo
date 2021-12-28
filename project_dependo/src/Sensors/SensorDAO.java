@@ -184,7 +184,7 @@ public class SensorDAO {
 			String sql2 = "select worker_dept, worker_name, worker_phone from tbl_worker where worker_id = ?";
 			
 			psmt = conn.prepareStatement(sql2);
-			psmt.setString(1, vo.getworkerid());
+			psmt.setString(1, vo.getworkerid());                                                                                              
 			rs = psmt.executeQuery();
 			
 			
