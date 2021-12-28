@@ -516,10 +516,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			
 			
 			$(gN).each(function(){
-				if(this.innerText.indexOf(wN) == 1){
+				if(this.innerText.indexOf(wN) >= 0){
 					//클래스 추가  bar1(보이게)  bar2(안보이게)
 					//bar1 추가 bar2 제거
 					// this.parentNode.parentNode.parentNode.parentNode.className += ' bar1';
+					
 					$(this.parentNode.parentNode.parentNode.parentNode).addClass("bar1");
 					$(this.parentNode.parentNode.parentNode.parentNode).removeClass("bar2");
 
