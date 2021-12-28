@@ -194,8 +194,9 @@ public class MemberDAO {
 				String worker_phone = rs.getString("worker_phone");
 				String worker_joindate = rs.getString("WORKER_JOINDATE");
 				String admin_yesno = rs.getString("admin_yesno");
+				String education = rs.getString("education");
 
-				vo = new MemberVO(worker_id, worker_pw, worker_dept, worker_name, worker_phone, worker_joindate);
+				vo = new MemberVO(worker_id, worker_pw, worker_dept, worker_name, worker_phone, worker_joindate, admin_yesno, education);
 			}
 
 		} catch (Exception e) {
@@ -235,8 +236,9 @@ public class MemberDAO {
 				String worker_phone = rs.getString("worker_phone");
 				String worker_joindate = rs.getString("WORKER_JOINDATE");
 				String admin_yesno = rs.getString("admin_yesno");
+				String education = rs.getString("education");
 
-				vo = new MemberVO(worker_id, worker_pw, worker_dept, worker_name, worker_phone, worker_joindate);
+				vo = new MemberVO(worker_id, worker_pw, worker_dept, worker_name, worker_phone, worker_joindate, admin_yesno, education);
 			}
 
 		} catch (Exception e) {

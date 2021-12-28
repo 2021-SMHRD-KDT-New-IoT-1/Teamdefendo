@@ -158,7 +158,7 @@ public class AttendanceDAO {
 	
 	
 	
-	public ArrayList<AttendanceVO> AndroidLoginTime(String id, String date) {
+	public AttendanceVO AndroidLoginTime(String id, String date) {
 
 				
 	
@@ -166,7 +166,7 @@ public class AttendanceDAO {
 
 					DBcon();
 
-					String sql = "SELECT * FROM tbl_attendance WHERE worker_id=? and TO_CHAR(start_time,'YYMMDD')= ?";
+					String sql = "SELECT * FROM tbl_attendance WHERE worker_id=? and TO_CHAR(start_time,'YYYY-MM-DD')= ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, id);
 					pstmt.setString(2, date);
@@ -179,7 +179,7 @@ public class AttendanceDAO {
 						String end_time = rs.getString("end_time");
 						String att_type = rs.getString("att_type");
 
-						al.add(new AttendanceVO(id, start_time, end_time, att_type));
+						avo = new AttendanceVO(id, start_time, end_time, att_type);
 
 					}
 					
@@ -191,7 +191,7 @@ public class AttendanceDAO {
 				}
 
 
-		return al;
+		return avo;
 
 	}
 

@@ -108,6 +108,7 @@ table.type11 th {
 				
 		
 			if(vo!=null){
+				if(vo.getEnd_time()!=null){
 				String time2= vo.getEnd_time();
 				Date early  = fm.parse(time2);
 				
@@ -116,7 +117,7 @@ table.type11 th {
 				}else{
 					earlyTime="Á¤»óÅð±Ù";
 				};
-
+				}
 			}
 			
 			if(vo!=null){
@@ -267,9 +268,9 @@ table.type11 th {
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;"><font
 									color="black"><%
-									if(vo!=null){
+									if(vo!=null){ if(vo.getEnd_time()!=null){
 										%><%=vo.getEnd_time().substring(11,19) %>
-								<%	}  %></font></td>
+								<%	}}  %></font></td>
 							</tr>
 						</tbody>
 					</table>
@@ -319,9 +320,9 @@ table.type11 th {
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;border: 2px solid #C0C0C0; background: #C0C0C0;"><font
 									color="#FFFFFF"><%
-									if(vo!=null){
+									if(vo!=null){if(vo.getEnd_time()!=null){
 										%><%=vo.getEnd_time().substring(11,19) %>
-								<%	}  %></font></td>
+								<%	} } %></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;border: 2px solid #C0C0C0; background: #C0C0C0;"><font
 									color="#FFFFFF"><%if(vo!=null){
