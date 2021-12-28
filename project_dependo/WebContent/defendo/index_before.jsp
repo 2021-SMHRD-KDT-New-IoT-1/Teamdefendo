@@ -92,6 +92,8 @@
 					
 				</ul>
 
+				
+				<!-- Menu Social -->
 				<!-- Menu Social -->
 			</div>
 		</div>
@@ -110,7 +112,9 @@
 					<div class="hero_slide_background" style="background-image:url(images/slider_background1.jpg)"></div>
 					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
 						<div class="hero_slide_content text-center">
+
 							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut" style="font-family: 'SpoqaHanSansNeo-Medium' !important;">근로자의 안전을 책임지는<span>Defendo!</span> </h1>
+
 						</div>
 					</div>
 				</div>
@@ -120,7 +124,9 @@
 					<div class="hero_slide_background" style="background-image:url(images/slider_background2.jpg)"></div>
 					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
 						<div class="hero_slide_content text-center">
+
 							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut" style="font-family: 'SpoqaHanSansNeo-Medium' !important;">근로자의 안전을 책임지는<span>Defendo!</span> </h1>
+
 						</div>
 					</div>
 				</div>
@@ -130,7 +136,11 @@
 					<div class="hero_slide_background" style="background-image:url(images/slider_background3.jpg)"></div>
 					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
 						<div class="hero_slide_content text-center">
+
 							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut" style="font-family: 'SpoqaHanSansNeo-Medium' !important;">근로자의 안전을 책임지는<span>Defendo!</span> </h1>
+
+							
+
 						</div>
 					</div>
 				</div>
