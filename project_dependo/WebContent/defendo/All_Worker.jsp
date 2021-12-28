@@ -62,7 +62,34 @@
                </a>
             </div>
          </div>
-
+	
+		
+	
+	
+		 <% MemberDAO dao = new MemberDAO();
+                         	
+                          ArrayList<MemberVO> al1 = dao.selectAll();
+                          
+                          int count1 =0;
+                          int count2 =0;
+                          int count3 =0;
+                          if(al1!=null){
+                        	  
+                        	  for(int i=0; i<al1.size(); i++){
+                        		  count1++;
+                        		  if(al1.get(i).getEducation().equals("Y")){
+                        			count2++;  
+                        		  }
+                        		  
+                        	  }
+                        	  
+                        	  count3=count1-count2;
+                        	  
+                          }
+                         
+                         
+                          %>
+	
          <!-- Main Navigation -->
 					<nav class="main_nav_container">
 						<div class="main_nav">
@@ -157,7 +184,7 @@
                   <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                    총 근로자 수</p>
                   <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    6389</p>
+                    <%=count1 %></p>
                 </div>
               </div>
               <!-- 1. Card -->
@@ -175,7 +202,7 @@
                                    총 이수자 수
                   </p>
                   <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    300
+                    <%=count2 %>
                   </p>
                 </div>
               </div>
@@ -200,7 +227,7 @@
                                     미이수 근로자 수              
                   </p>
                   <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    100
+                    <%=count3 %>
                   </p>
                   </p>
                 </div>
@@ -242,11 +269,7 @@
                   </thead>
                   
                           
-                          <% MemberDAO dao = new MemberDAO();
-                         	
-                          ArrayList<MemberVO> al1 = dao.selectAll();
                          
-                          %>
                           
                           
                           <% 
@@ -301,7 +324,7 @@
                 	 
                 	 
                 	 
-             <%    }else{%>
+             <%    }else{%>	
             	 
                       
                         <!-- 안전교육 - 미이수 -->
@@ -342,7 +365,7 @@
                           
                           <button
                             class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                            aria-label="Delete" onclick="location.href='../Delete?id=<%=al1.get(i).getWorker_id()%>'">
+                            aria-label="Delete" onclick="if (confirm('삭제하시겠습니까?')){location.href='../Delete?id=<%=al1.get(i).getWorker_id()%>'}else{location.href=''}">
                             <svg
                               class="w-5 h-5"
                               aria-hidden="true"
@@ -369,99 +392,7 @@
                   </tbody>
                 </table>
               </div>
-              <div
-                class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
-              >
-                <span class="flex items-center col-span-3">
-                  Showing 21-30 of 100
-                </span>
-                <span class="col-span-2"></span>
-                <!-- Pagination -->
-                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                  <nav aria-label="Table navigation">
-                    <ul class="inline-flex items-center">
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
-                          aria-label="Previous">
-                          <svg
-                            aria-hidden="true"
-                            class="w-4 h-4 fill-current"
-                            viewBox="0 0 20 20">
-                            <path
-                              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                              clip-rule="evenodd"
-                              fill-rule="evenodd"
-                            ></path>
-                          </svg>
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          1
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          2
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 text-white transition-colors duration-150 bg-purple-600 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          3
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          4
-                        </button>
-                      </li>
-                      <li>
-                        <span class="px-3 py-1">...</span>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          8
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          9
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
-                          aria-label="Next"
-                        >
-                          <svg
-                            class="w-4 h-4 fill-current"
-                            aria-hidden="true"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                              clip-rule="evenodd"
-                              fill-rule="evenodd"
-                            ></path>
-                          </svg>
-                        </button>
-                      </li>
-                    </ul>
-                  </nav>
-                </span>
+
               </div>
             </div>
             
@@ -585,10 +516,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			
 			
 			$(gN).each(function(){
-				if(this.innerText.indexOf(wN) == 1){
+				if(this.innerText.indexOf(wN) >= 0){
 					//클래스 추가  bar1(보이게)  bar2(안보이게)
 					//bar1 추가 bar2 제거
 					// this.parentNode.parentNode.parentNode.parentNode.className += ' bar1';
+					
 					$(this.parentNode.parentNode.parentNode.parentNode).addClass("bar1");
 					$(this.parentNode.parentNode.parentNode.parentNode).removeClass("bar2");
 

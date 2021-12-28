@@ -18,7 +18,6 @@ public class Logout extends HttpServlet {
 		// TODO Auto-generated method stub
 	
 	
-		//세션 삭제 (현재 로그인 사용자의 정보 삭제)
 		
 				HttpSession session =  request.getSession();
 				

@@ -1,8 +1,7 @@
-package Member;
+package Helmet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,29 +11,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-@WebServlet("/AndroidSelectAll")
-public class AndroidSelectAll extends HttpServlet {
+@WebServlet("/AndroidHm")
+public class AndroidHmregistration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		response.setContentType("text/html;charset=utf-8");
+		String hm_id = request.getParameter("hm_id");
+		String worker_id = request.getParameter("worker_id");
 
-		String WORKER_DEPT = request.getParameter("dept");
 
-		System.out.println("부서명 들어오나 : " + WORKER_DEPT);
+		HmDAO dao = new HmDAO();
 
-		MemberDAO dao = new MemberDAO();
-		ArrayList<MemberVO> al = dao.select(WORKER_DEPT);
+		int cnt = dao.Hmregistration(hm_id, worker_id);
+		System.out.println(cnt);
 
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
-		String result = new Gson().toJson(al);
+		String result = new Gson().toJson(cnt);
+
 		PrintWriter out = response.getWriter();
-		out.print(result);
+		out.print(result); // cnt가 0> 이면 헬멧 등록 성공 아니면 실패
 
 	}
 

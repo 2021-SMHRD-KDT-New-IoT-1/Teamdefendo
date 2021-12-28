@@ -99,44 +99,42 @@ table.type11 th {
 			String id = (String)session.getAttribute("ID");
 			AttendanceDAO dao = new AttendanceDAO();
 			AttendanceVO vo = dao.attendance(id);
-			
-			
-			
-
+			System.out.print(vo);
 			SimpleDateFormat fm = new SimpleDateFormat("YYYY-hh-dd HH:mm:ss");
-			String time1= vo.getStart_time();
-			String lateTime = null;
-			String earlyTime =null;
-
-			if(vo.getEnd_time()!=null){
+			String lateTime = " ";
+			String earlyTime =" ";
+			
+			if(vo!=null){
+				
+		
+			if(vo!=null){
+				if(vo.getEnd_time()!=null){
 				String time2= vo.getEnd_time();
 				Date early  = fm.parse(time2);
+				
 				if(early.getHours()<18){
 					earlyTime="조퇴";
 				}else{
 					earlyTime="정상퇴근";
 				};
-				
-				
+				}
 			}
 			
-		
-			
-		
-			Date late = fm.parse(time1);
-			
-			
+			if(vo!=null){
+				String time1= vo.getStart_time();
+				Date late  = fm.parse(time1);
+				
+				
+				if(late.getHours()>8){
+					lateTime="지각";
+				}else{
+					lateTime="정상출근";
+				}
 
-			System.out.print(late.getHours());
-			
-			if(late.getHours()>9){
-				lateTime="지각";
-			}else{
-				lateTime="정상출근";
+			}
+
 			}
 			
-			
-	
 			%>
 	
 			
@@ -248,7 +246,8 @@ table.type11 th {
 									color="black">출근</font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;"><font
-									color="black"><%=vo.getStart_time().substring(11,19)%></font></td>
+									color="black"><%if(vo!=null){ %>
+									<%=vo.getStart_time().substring(11,19)%><%} %></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px; background: #1A1A1A; border: 2px solid black;"><font
 									color="#FFFFFF">조퇴</font></td>
@@ -262,16 +261,16 @@ table.type11 th {
 									color="black">지각</font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;"><font
-									color="black"><%=lateTime %></font></td>
+									color="black"><%if(lateTime!=null){ %><%=lateTime %><%} %></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px; border: 2px solid black;"><font
 									color="black">퇴근</font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;"><font
 									color="black"><%
-									if(vo.getEnd_time()!=null){
+									if(vo!=null){ if(vo.getEnd_time()!=null){
 										%><%=vo.getEnd_time().substring(11,19) %>
-								<%	}  %></font></td>
+								<%	}}  %></font></td>
 							</tr>
 						</tbody>
 					</table>
@@ -308,28 +307,28 @@ table.type11 th {
 							<tr>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px; border: 2px solid #C0C0C0; background: #C0C0C0; "><font
-									color="#FFFFFF"><%=vo.getStart_time().substring(0,11) %></font></td>
+									color="#FFFFFF"><%if(vo!=null){ %><%=vo.getStart_time().substring(0,11) %><%} %></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;border: 2px solid #C0C0C0; background: #C0C0C0;"><font
-									color="#FFFFFF"><%=vo.getStart_time().substring(11,19) %></font></td>
+									color="#FFFFFF"><%if(vo!=null){%><%=vo.getStart_time().substring(11,19) %><%} %></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px; border: 2px solid #C0C0C0; background: #C0C0C0;"><font
-									color="#FFFFFF"><%=lateTime %></font></td>
+									color="#FFFFFF"><%if(lateTime!=null){%><%=lateTime %><%} %></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;border: 2px solid #C0C0C0; background: #C0C0C0;"><font
 									color="#FFFFFF"><%if(earlyTime!=null){%><%=earlyTime%><%} %></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;border: 2px solid #C0C0C0; background: #C0C0C0;"><font
 									color="#FFFFFF"><%
-									if(vo.getEnd_time()!=null){
+									if(vo!=null){if(vo.getEnd_time()!=null){
 										%><%=vo.getEnd_time().substring(11,19) %>
-								<%	}  %></font></td>
+								<%	} } %></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;border: 2px solid #C0C0C0; background: #C0C0C0;"><font
-									color="#FFFFFF"><%
-									if(vo.getAtt_type().equals("N")){
+									color="#FFFFFF"><%if(vo!=null){
+									if(vo!=null){if(vo.getAtt_type().equals("N")){
 										%>출근
-								<%	}else{%>퇴근<%}  %></font></td>
+								<%	}else{%>퇴근<%}  }}%></font></td>
 							</tr>
 						</tbody>
 					</table>

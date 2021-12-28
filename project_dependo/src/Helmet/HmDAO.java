@@ -96,7 +96,6 @@ public class HmDAO {
 			DBcon();
 			
 			
-			// 4. SQLπÆ ¡ÿ∫Ò
 			String sql = "UPDATE tbl_helmet SET worker_id=? WHERE hm_id =?";
 			pstmt = con.prepareStatement(sql);
 			

@@ -28,7 +28,7 @@ public class Login extends HttpServlet {
 		vo=dao.Login(id,pw);
 		
 		
-		
+		if(vo!=null){
 		if(vo.getAdmin_yesno().equals("Y")) {
 			
 			HttpSession session =request.getSession();
@@ -44,14 +44,19 @@ public class Login extends HttpServlet {
 			session.setAttribute("ID", id);
 			
 			response.sendRedirect("./defendo/worker.jsp");
+		
+		}
+		
+	}
+		else {
+			System.out.println("로그인 실패");
 			
-
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter writer = response.getWriter(); 
+			writer.println("<script>alert('아이디,비밀번호를 확인해주세요'); location.href='./defendo/Login.html'</script>"); 
+			writer.close();
 			
 			
-			
-			
-		}else {
-			response.sendRedirect("./defendo/index_before.jsp");
 		}
 	
 		

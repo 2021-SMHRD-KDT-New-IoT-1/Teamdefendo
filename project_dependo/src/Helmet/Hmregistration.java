@@ -21,7 +21,6 @@ public class Hmregistration extends HttpServlet {
 		String hm_id = request.getParameter("hm_id");
 		String worker_id = request.getParameter("worker_id");
 		
-	      System.out.println(hm_id+"/"+worker_id);
 
 		
 		
