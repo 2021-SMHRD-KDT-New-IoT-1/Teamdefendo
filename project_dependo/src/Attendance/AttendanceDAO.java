@@ -17,9 +17,9 @@ public class AttendanceDAO {
 	Connection con;
 	PreparedStatement pstmt;
 	ResultSet rs;
-	AttendanceVO avo = null;
+	AttendanceVO avo;
 	int cnt = 0;
-	ArrayList<AttendanceVO> al;
+	ArrayList<AttendanceVO> al = new ArrayList<AttendanceVO>();
 
 	public void DBcon() {
 		try {
@@ -114,9 +114,15 @@ public class AttendanceDAO {
 				String start_time = rs2.getString("start_time");
 				String end_time = rs2.getString("end_time");
 				String att_type = rs2.getString("att_type");
+				System.out.println(start_time);
+				System.out.println(end_time);
+				System.out.println(att_type);
 
 				avo = new AttendanceVO(id, start_time, end_time, att_type);
 				al.add(avo);
+				for(int i=0;i<al.size();i++) {
+				System.out.println(al.get(i).getStart_time());}
+				
 			}
 		} catch (Exception e) {
 

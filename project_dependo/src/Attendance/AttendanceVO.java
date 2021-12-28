@@ -2,6 +2,8 @@ package Attendance;
 
 import java.sql.Date;
 
+
+
 public class AttendanceVO {
 	
 
@@ -12,7 +14,7 @@ public class AttendanceVO {
 	
 	
 	
-	
+	public AttendanceVO(){}
 	public AttendanceVO(String worker_id, String start_time, String end_time, String att_type) {
 	
 		this.worker_id = worker_id;

@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Date"%>
 <%@page import="Attendance.AttendanceVO"%>
 <%@page import="Attendance.AttendanceDAO"%>
@@ -103,7 +104,8 @@ table.type11 th {
 			SimpleDateFormat fm = new SimpleDateFormat("YYYY-hh-dd HH:mm:ss");
 			String lateTime = " ";
 			String earlyTime =" ";
-			
+			ArrayList<AttendanceVO> al = dao.LoginAllTime(id);
+			System.out.print(al.get(0).getStart_time());
 			if(vo!=null){
 				
 		
@@ -304,32 +306,51 @@ table.type11 th {
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;border: 2px solid #696969; background: #696969;"><font
 									color="#FFFFFF">근태 상태</font></td>
 							</tr>
+							<%for(int i = 0; i<al.size();i++){
+									AttendanceVO avo = al.get(i);
+									System.out.println("1"+avo.getStart_time());
+									String time4 = avo.getEnd_time();
+									String earlyTime1 = "";
+									if(time4 == null){time4 = "";}else{
+									System.out.println("dlrj"+time4);
+									if(Integer.parseInt(time4.substring(11,13)) <18){
+										earlyTime1="조퇴";
+									}else{
+										earlyTime1="정상퇴근";
+									}};
+									System.out.println("3"+avo.getStart_time());
+									String time3= avo.getStart_time();
+									System.out.println("4"+avo.getStart_time());
+									
+									String lateTime1 = "";
+									if(Integer.parseInt(time3.substring(11,13))>8){
+										lateTime1="지각";
+									}else{
+										lateTime1="정상출근";
+									}%>
 							<tr>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px; border: 2px solid #C0C0C0; background: #C0C0C0; "><font
-									color="#FFFFFF"><%if(vo!=null){ %><%=vo.getStart_time().substring(0,11) %><%} %></font></td>
+									color="#FFFFFF"><%=avo.getStart_time().substring(0,11) %></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;border: 2px solid #C0C0C0; background: #C0C0C0;"><font
-									color="#FFFFFF"><%if(vo!=null){%><%=vo.getStart_time().substring(11,19) %><%} %></font></td>
+									color="#FFFFFF"><%=avo.getStart_time().substring(11,19) %></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px; border: 2px solid #C0C0C0; background: #C0C0C0;"><font
-									color="#FFFFFF"><%if(lateTime!=null){%><%=lateTime %><%} %></font></td>
+									color="#FFFFFF"><%=lateTime1 %></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;border: 2px solid #C0C0C0; background: #C0C0C0;"><font
-									color="#FFFFFF"><%if(earlyTime!=null){%><%=earlyTime%><%} %></font></td>
+									color="#FFFFFF"><%=earlyTime1%></font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;border: 2px solid #C0C0C0; background: #C0C0C0;"><font
-									color="#FFFFFF"><%
-									if(vo!=null){if(vo.getEnd_time()!=null){
-										%><%=vo.getEnd_time().substring(11,19) %>
-								<%	} } %></font></td>
+									color="#FFFFFF"><%if(!time4.equals("")){%><%=avo.getEnd_time().substring(11,19) %><%}%>
+								</font></td>
 								<td
 									style="font-family: 'Dolbomche_R' !important; font-size: 25px;border: 2px solid #C0C0C0; background: #C0C0C0;"><font
-									color="#FFFFFF"><%if(vo!=null){
-									if(vo!=null){if(vo.getAtt_type().equals("N")){
-										%>출근
-								<%	}else{%>퇴근<%}  }}%></font></td>
+									color="#FFFFFF"><%if(avo.getAtt_type().equals("N")){%>출근
+								<%	}else{%>퇴근<%}%></font></td>
 							</tr>
+							<%} %>
 						</tbody>
 					</table>
 				</div>

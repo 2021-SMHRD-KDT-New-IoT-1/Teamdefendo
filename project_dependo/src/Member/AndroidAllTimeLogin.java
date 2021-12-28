@@ -15,10 +15,16 @@ import com.google.gson.Gson;
 import Attendance.AttendanceDAO;
 import Attendance.AttendanceVO;
 
+/**
+ * Servlet implementation class AndroidAllTimeLogin
+ */
 @WebServlet("/AndroidAllTimeLogin")
 public class AndroidAllTimeLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
 		response.setContentType("text/html;charset=utf-8");
@@ -36,7 +42,7 @@ public class AndroidAllTimeLogin extends HttpServlet {
 		String result = new Gson().toJson(al);
 		PrintWriter out = response.getWriter();
 		out.print(result);
-		
+		System.out.println("Å×½ºÆ®");
 	}
 
 }
