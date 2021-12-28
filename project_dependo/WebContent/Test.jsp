@@ -72,29 +72,6 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	
-	$(document).ready(function(){
-		$.ajax({
-			type: 'get',   //get방식으로 명시
-			url : './GetAttendance',  //이동할 jsp 파일 주소
-			dataType:'text',   //문자형식으로 받기
-			success: function(data){   //데이터 주고받기 성공했을 경우 실행할 결과
-
-			
-			
-			
-			},
-			error:function(){   //데이터 주고받기가 실패했을 경우 실행할 결과
-				alert('실패');
-			}
-		})
-	});
-	
-	
-	
-	
-	
-	
 	/*
 
 	

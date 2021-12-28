@@ -30,10 +30,10 @@ public class InputArduino extends HttpServlet {
 		System.out.println(lock);
 		
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/GetAttendance");
-		request.setAttribute("hm_id", hm_id);
-		request.setAttribute("GetAttendance", lock);
-		rd.forward(request, response);
+//		RequestDispatcher rd = request.getRequestDispatcher("/GetAttendance");
+//		request.setAttribute("hm_id", hm_id);
+//		request.setAttribute("GetAttendance", lock);
+//		rd.forward(request, response);
 
 		ArduinoDAO dao = new ArduinoDAO();
 		ArduinoVO vo = dao.update(attack, Lat, Long, alram, lock, hm_id);
