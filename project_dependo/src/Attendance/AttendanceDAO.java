@@ -95,6 +95,39 @@ public class AttendanceDAO {
 		return avo;
 
 	}
+	
+	public ArrayList<AttendanceVO> LoginAllTime(String id) {
+		
+		
+		
+		try {
+
+			DBcon();
+
+			String sql2 = "SELECT * FROM tbl_attendance WHERE worker_id=? ORDER BY start_time DESC";
+			pstmt = con.prepareStatement(sql2);
+			pstmt.setString(1, id);
+			ResultSet rs2 = pstmt.executeQuery();
+
+			while (rs2.next()) {
+
+				String start_time = rs2.getString("start_time");
+				String end_time = rs2.getString("end_time");
+				String att_type = rs2.getString("att_type");
+
+				avo = new AttendanceVO(id, start_time, end_time, att_type);
+				al.add(avo);
+			}
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		} finally {
+			DBclose();
+		}
+		return al;
+
+	}
+	
 
 	public AttendanceVO LoginTime(String id, String pw) {
 
