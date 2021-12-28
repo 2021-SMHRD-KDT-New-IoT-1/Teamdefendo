@@ -18,7 +18,7 @@ public class SensorDAO {
     ArrayList<SensorVO> gpsal =null;
     MemberVO vo = null;
     ArrayList<SensorVO> al = new ArrayList<>();
-
+    
 
 	private void conn() {
 
@@ -104,6 +104,39 @@ public class SensorDAO {
 			close();
 		}
 		return vo;
+	}
+	
+	
+	public ArrayList<SensorVO> AndroidGetSensor() {
+		
+		conn();
+		
+		String sql = "select * from tbl_helmet";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+			
+				String worker_id = rs.getString("worker_id");
+				String hm_lock = rs.getString("HM_LOCK");
+				float longitude = rs.getFloat("LONGITUDE");
+				float latitude = rs.getFloat("LATITUDE");
+				int hm_gas_sensor = rs.getInt("HM_GAS_SENSOR");
+				int hm_impact_sensor = rs.getInt("HM_IMPACT_SENSOR");
+				String lock = rs.getString("lock");
+				
+				gpsvo = new SensorVO(latitude, longitude, hm_impact_sensor, hm_gas_sensor, worker_id, lock);
+				al.add(gpsvo);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return al;
 	}
 	
 	

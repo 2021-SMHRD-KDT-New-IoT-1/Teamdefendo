@@ -13,6 +13,20 @@ public class SensorVO {
 	String worker_dept;
 	String worker_name;
 	String worker_phone;
+	String lock;
+	
+	
+	
+	public SensorVO(float latitude, float longitude, int hm_impact_sensor, int hm_gas_sensor, String worker_id, String lock) {
+		
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.hm_impact_sensor = hm_impact_sensor;
+		this.hm_gas_sensor = hm_gas_sensor;
+		this.worker_id = worker_id;
+		this.lock=lock;
+	}
+	
 	
 	
 	public float getLatitude() {
