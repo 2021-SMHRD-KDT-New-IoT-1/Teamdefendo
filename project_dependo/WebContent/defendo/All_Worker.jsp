@@ -275,7 +275,7 @@
                           <% 
                           for(int i=0; i<al1.size();i++){
                         	  %>
-                  <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" <%=al1.get(i).getWorker_name() %>>
+                  <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" >
                     <tr class="text-gray-700 dark:text-gray-400">
                       <td class="px-4 py-3">
                         <div class="flex items-center text-sm">
@@ -499,11 +499,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		
 		
 		<style>
-			.bar1{
-				visibility : visible;
-			}
+			
 			.bar2{
-				visibility : hidden;
+				display : none;
+				
 			}
 			
 		</style>
@@ -521,16 +520,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					//bar1 추가 bar2 제거
 					// this.parentNode.parentNode.parentNode.parentNode.className += ' bar1';
 					
-					$(this.parentNode.parentNode.parentNode.parentNode).addClass("bar1");
-					$(this.parentNode.parentNode.parentNode.parentNode).removeClass("bar2");
+					$(this.parentNode.parentNode.parentNode.parentNode.parentNode).addClass("bg-white divide-y dark:divide-gray-700 dark:bg-gray-800");
+					$(this.parentNode.parentNode.parentNode.parentNode.parentNode).removeClass("bar2");
 
 
 				}else{
 					//bar2 추가 bar1제거
 					// this.parentNode.parentNode.parentNode.parentNode.className += ' bar2';
 					
-					$(this.parentNode.parentNode.parentNode.parentNode).addClass("bar2");
-					$(this.parentNode.parentNode.parentNode.parentNode).removeClass("bar1");
+					$(this.parentNode.parentNode.parentNode.parentNode.parentNode).addClass("bar2");
+					$(this.parentNode.parentNode.parentNode.parentNode.parentNode).removeClass("bg-white divide-y dark:divide-gray-700 dark:bg-gray-800");
 
 
 					

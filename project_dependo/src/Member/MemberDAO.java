@@ -214,6 +214,8 @@ public class MemberDAO {
 
 	}
 
+	
+	
 	public MemberVO AndroidLogin(String id) {
 
 		try {
