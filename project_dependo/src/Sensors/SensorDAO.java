@@ -19,6 +19,7 @@ public class SensorDAO {
     MemberVO vo = null;
     ArrayList<SensorVO> al = new ArrayList<>();
     
+    
 
 	private void conn() {
 
@@ -216,6 +217,75 @@ public class SensorDAO {
 		
 	}
 	
+	public ArrayList<SensorVO> Gps(String dept) {
+		
+		gpsal = new ArrayList<SensorVO>();
+		
+		try {
+		
+			
+			
+			conn();
+		
+		
+		// 4. SQLπÆ ¡ÿ∫Ò
+		String sql = "select worker_id,worker_dept, worker_name, worker_phone from tbl_worker where worker_dept = ?";
+		
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, dept);
+		rs = psmt.executeQuery();
+		
+		
+		while (rs.next()) {
+
+			String worker_id = rs.getString(1);
+			String worker_dept = rs.getString(2);
+			String worker_name = rs.getString(3);
+			String worker_phone = rs.getString(4);
+			
+			
+			gpsvo = new SensorVO(0,0, "hm_id",0,0,worker_id,worker_dept, worker_name, worker_phone);
+			
+           
+			gpsal.add(gpsvo);
+
+		}
+		for(SensorVO vo : gpsal ) {
+			String sql2 = "select hm_impact_sensor,hm_gas_sensor,latitude,longitude,hm_id  from tbl_helmet where worker_id = ?";
+			
+			psmt = conn.prepareStatement(sql2);
+			psmt.setString(1, vo.getworkerid());                                                                                              
+			rs = psmt.executeQuery();
+			
+			
+			if (rs.next()) {
+				float latitude = rs.getFloat("latitude");
+				float longitude = rs.getFloat("longitude");
+				int hm_impact_sensor = rs.getInt("hm_impact_sensor");
+				int hm_gas_sensor = rs.getInt("hm_gas_sensor");
+				String hm_id = rs.getString("hm_id");
+				
+				
+				gpsvo = new SensorVO(latitude,longitude, hm_id, hm_gas_sensor, 
+						hm_impact_sensor, vo.getworkerid(),vo.getWorkerDept(), vo.getWorkerName(), vo.getWorkerPhone());
+				al.add(gpsvo);
+		}
+		
+		
+		
+		} 
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+
+		}
+
+		return al;
+		
+		
+		
+	}
 	
 
 	

@@ -25,9 +25,16 @@ public class InputArduino extends HttpServlet {
 		String lock = request.getParameter("lock");
 		String hm_id = request.getParameter("hm_id");
 		
+		System.out.println(attack);
+		System.out.println(alram);
+		System.out.println(Lat);
+		System.out.println(Long);
+		System.out.println(lock);
+		System.out.println(hm_id);
 		
 		
-		System.out.println("잠근 버튼 : "+lock);
+		
+//		System.out.println("잠근 버튼 : "+lock);
 		
 		
 //		RequestDispatcher rd = request.getRequestDispatcher("/GetAttendance");
