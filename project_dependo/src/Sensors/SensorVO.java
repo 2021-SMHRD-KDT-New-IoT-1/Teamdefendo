@@ -2,7 +2,6 @@ package Sensors;
 
 public class SensorVO {
 	
-	private int mysensor;
 	
 	float latitude; //위도
 	float longitude; // 경도
@@ -67,17 +66,7 @@ public class SensorVO {
 	public SensorVO() {
 	}
 
-	public SensorVO(int mysensor) {
-		this.mysensor = mysensor;
-	}
 
-	public int getMysensor() {
-		return mysensor;
-	}
-
-	public void setMysensor(int mysensor) {
-		this.mysensor = mysensor;
-	}
 	public int getgas() {
 		return hm_gas_sensor;
 	}
@@ -97,9 +86,5 @@ public class SensorVO {
 		return worker_dept;
 	}
 
-	@Override
-	public String toString() {
-		return "SensorVO [mysensor=" + mysensor + "]";
-	}
 
 }

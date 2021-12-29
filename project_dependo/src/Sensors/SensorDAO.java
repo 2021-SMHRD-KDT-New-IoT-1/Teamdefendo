@@ -85,27 +85,6 @@ public class SensorDAO {
 	}
 	
 	
-	public SensorVO getSensor() {
-		SensorVO vo = null;
-		conn();
-		System.out.println("叼厚 立加 己傍  get sensor");
-		String sql = "select * from tbl_helmet";
-		try {
-			psmt = conn.prepareStatement(sql);
-			rs = psmt.executeQuery();
-			if (rs.next()) {
-				int mysensor = rs.getInt(1);
-				vo = new SensorVO(mysensor);
-			}
-			System.out.println("select 己傍");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return vo;
-	}
 	
 	
 	public ArrayList<SensorVO> AndroidGetSensor(String dept) {
@@ -221,9 +200,7 @@ public class SensorDAO {
 		
 		gpsal = new ArrayList<SensorVO>();
 		
-		try {
-		
-			
+		try {					
 			
 			conn();
 		

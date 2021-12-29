@@ -20,7 +20,7 @@ public class AndroidIdSensor extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("UTF-8");
 		String dept = request.getParameter("dept");
 		
 		SensorDAO dao = new SensorDAO();
