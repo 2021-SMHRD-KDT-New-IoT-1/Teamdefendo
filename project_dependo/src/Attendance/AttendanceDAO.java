@@ -123,8 +123,7 @@ public class AttendanceDAO {
 
 				avo = new AttendanceVO(id, start_time, end_time, att_type);
 				al.add(avo);
-				for(int i=0;i<al.size();i++) {
-				System.out.println(al.get(i).getStart_time());}
+				
 				
 			}
 		} catch (Exception e) {

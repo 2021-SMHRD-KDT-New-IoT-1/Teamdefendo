@@ -311,7 +311,7 @@ table.type11 th {
 									System.out.println("1"+avo.getStart_time());
 									String time4 = avo.getEnd_time();
 									String earlyTime1 = "";
-									if(time4 == null){time4 = "";}else{
+									if(time4.equals("")){time4 = "";}else{
 									System.out.println("dlrj"+time4);
 									if(Integer.parseInt(time4.substring(11,13)) <18){
 										earlyTime1="Α¶Επ";
